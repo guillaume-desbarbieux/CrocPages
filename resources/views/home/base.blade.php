@@ -11,7 +11,15 @@
 </head>
 
 <body>
+    <div class="container m-auto p-0">
 
-    @yield('content')
+        @yield('promotionnalBanner')
 
+        @yield('header')
+
+        @yield('content')
+
+        @yield('footer')
+
+    </div>
 </body>
