@@ -2,7 +2,7 @@
 
 ## Introduction 
 
-Croc Pages est un site de e-commerce pour une librairie local, la fonctionnalité principale est de  proposer un système de Click and Collect. Le site est développé en **Laravel**. 
+Croc Pages est un site de e-commerce pour une librairie local, la fonctionnalité principale est de proposer un système de Click and Collect. Le site est développé en **Laravel**. 
 
 ## Architecture du projet
 
@@ -76,4 +76,4 @@ php artisan key:generate
 composer run dev
 ```
 
-4. Accéder à l'application : `http://localhost:8000`
+4. Accéder à l'application : [http://localhost:8000](http://localhost:8000)
