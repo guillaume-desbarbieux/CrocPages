@@ -7,6 +7,7 @@
     <title>Accueil</title>
 </head>
 <body>
-    <h1>Croc Page</h1>
+    <h1>Croc Page </h1>
+    <h2>Bienvenue Julien </h2>
 </body>
 </html>

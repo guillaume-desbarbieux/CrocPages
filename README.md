@@ -47,9 +47,10 @@ Croc Pages est un site de e-commerce pour une librairie local, la fonctionnalit�
 
 Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 
--PHP v8.2
--Composer
--Laravel v12
+1. PHP v8.2
+2. Composer
+3. Laravel v12
+4. Node.js v18
 
 ## Installation
 
@@ -64,6 +65,7 @@ cd CrocPages
 npm install
 npm run build
 composer install
+php artisan migrate
 cp .env.example .env
 php artisan key:generate
 ```
