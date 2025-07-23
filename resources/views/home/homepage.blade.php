@@ -13,7 +13,10 @@
         @endforeach
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 4a5a0ea (view in view/home)
 @endsection
 
 @section('footer')
@@ -22,5 +25,8 @@
 =======
     <h4>footer</h4>
 >>>>>>> 63d8bb1 (view in view/home)
+<<<<<<< HEAD
 >>>>>>> bf95d87 (view in view/home)
+=======
+>>>>>>> 4a5a0ea (view in view/home)
 @endsection
