@@ -65,8 +65,8 @@ cd CrocPages
 npm install
 npm run build
 composer install
-php artisan migrate
 cp .env.example .env
+php artisan migrate
 php artisan key:generate
 ```
 
