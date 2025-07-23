@@ -51,7 +51,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 -Composer
 -Laravel v12
 
-##
+## Installation
 
 1. Cloner le dépôt :
 ```bash
@@ -62,8 +62,16 @@ cd CrocPages
 2. Installer les dépendances :
 ```bash
 npm install
-npm run dev
+npm run build
 composer install
+cp .env.example .env
+php artisan key:generate
 ```
 
-3. Accéder à l'application : `http://localhost:8000`
+3. Lancer le projet
+
+```bash
+composer run dev
+```
+
+4. Accéder à l'application : `http://localhost:8000`
