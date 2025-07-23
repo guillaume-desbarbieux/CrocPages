@@ -56,7 +56,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 
 1. Cloner le dépôt :
 ```bash
-git clone <url>/CrocPages.git
+git clone git@github.com:guillaume-desbarbieux/CrocPages.git
 cd CrocPages
 ```
 
