@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     function index(): View{
-        return view('cart');
+        return view('cart.cart-show');
     }
 }
