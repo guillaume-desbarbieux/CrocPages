@@ -13,3 +13,8 @@
         @endforeach
     </div>
 @endsection
+
+@section('footer')
+    <h4 class="text-center bg-success">footer</h4>
+    <h4>footer</h4>
+@endsection
