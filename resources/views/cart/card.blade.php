@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container shadow border rounded m-4 p-2">
     <div class="row align-items-center">
-        <div class="col-3 mt-4">
+        <div class="col-3">
            <img class="w-50 h-50" src="{{ $urlImg }}" alt="image produit"/>
         </div>
-        <div class="col-5">
+        <div class="col-4">
             <div class="row">
                 <h3>{{ $title }}</h3>
                 <p>{{ $author }}</p>
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-1">
+        <div class="col-2">
             <input class="btn btn-danger" type="button"  value="Supprimer"/>
         </div>
     </div>
