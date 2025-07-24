@@ -1,6 +1,6 @@
 @props(['article'])
     <a class="row h-95" href= {{  route('catalog.show', ['id'=>$article['id']]) }}>
-        <img class="img-fluid" src="{{ $article['imgUrl'] }}"
+        <img class="img-fluid object-fit-contain" style="height:400px" src="{{ $article['imgUrl'] }}"
             alt="image de couverture de {{ $article['title'] }} ({{ $article['author'] }})">
     </a>
 
