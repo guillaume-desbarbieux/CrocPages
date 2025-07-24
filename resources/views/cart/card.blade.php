@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="col-1">
-            <input class="btn btn-danger" type="button" value="Supprimer"/>
+            <input class="btn btn-danger" type="button"  value="Supprimer"/>
         </div>
     </div>
 </div>

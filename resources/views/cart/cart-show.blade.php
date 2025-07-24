@@ -27,6 +27,7 @@
 @endphp
 
 @section('products')
+    <a href="{{ route('homepage') }}">Home</a>
     @foreach ($articles as $product)
         @include('cart.card',[
                     'title' => $product['title'],
