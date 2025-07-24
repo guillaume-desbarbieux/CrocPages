@@ -11,5 +11,5 @@ Route::get('/', [HomeController::class, 'index'])->name("homepage");
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
 Route::get('/Catalog', [CatalogController::class, 'index']) ->name('catalog');
-Route::get('/product/{id}', [ProductController::class, 'show']);
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('catalog.show');
 
