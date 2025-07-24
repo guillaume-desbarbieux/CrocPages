@@ -8,10 +8,7 @@
 </head>
 <body>
 <header>
-    <nav>
-        <a href="{{ route('homepage') }}">Accueil</a> |
-        <a href="{{ route('catalog') }}">Catalogue</a>
-    </nav>
+
 </header>
     <x-promo-banner>Promo du jour</x-promo-banner>
     <div class="container">
