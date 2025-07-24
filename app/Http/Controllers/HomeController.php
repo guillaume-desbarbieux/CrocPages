@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\View;
 class HomeController extends Controller
 {
     function index(): View{
-        return view('home.homepage');
+        $articles = include base_path('data/articles.php');
+        return view('home.homepage', compact('articles'));
     }
 }
