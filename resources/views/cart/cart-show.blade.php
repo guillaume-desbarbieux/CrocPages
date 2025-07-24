@@ -39,3 +39,10 @@
     @endforeach
     
 @endsection
+
+@section('total-cart')
+    @include('cart.total-cart',[
+        'totalPrice' => 300.99,
+        'shippingPrice' => 10.50
+    ])
+@endsection
