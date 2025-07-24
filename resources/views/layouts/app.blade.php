@@ -1,33 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="fr">
-<head>
-    <meta charset="UTF-8" />
-    <title>@yield('title', 'Croc-Page')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-
-   <header>
-    <nav>
-        <a href="{{ route('homepage') }}">Accueil</a> |
-        <a href="{{ route('catalog') }}">Catalogue</a>
-    </nav>
-</header>
-
-
-  <div class="container mt-4">
-        @yield('content')
-    </div>
-
-    <footer>
-       footer
-    </footer>
-
-</body>
-</html>
-=======
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +7,12 @@
     <title>@yield('title', 'Mon site')</title>
 </head>
 <body>
+<header>
+    <nav>
+        <a href="{{ route('homepage') }}">Accueil</a> |
+        <a href="{{ route('catalog') }}">Catalogue</a>
+    </nav>
+</header>
     <x-promo-banner>Promo du jour</x-promo-banner>
     <div class="container">
         <x-navbar></x-navbar>
@@ -51,4 +29,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
->>>>>>> 46fa7ec (feat(chore): ajout page produit)
