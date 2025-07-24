@@ -5,9 +5,9 @@
         <h2>Meilleures Ventes</h2>
     </div>
 
-    <div class="row">
+    <div class="row justify-content-center mt-5">
         @foreach ($articles as $article)
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center">
+            <div class="card col-12 col-sm-5 col-md-5 col-lg-2 text-center mx-2 mb-3" >
                 <x-home.card :article="$article" />
             </div>
         @endforeach
