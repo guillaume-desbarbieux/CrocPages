@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<x-head />
+@extends('layouts.app')
 
-<body>
+@section('content')
     <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh">
         <div class="row" >
             <div class="col">
@@ -15,6 +13,4 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+@endsection
