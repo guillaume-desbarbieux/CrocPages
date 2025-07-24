@@ -29,7 +29,7 @@
 
 <div class="row justify-content-center mt-5">
         @foreach ($articles as $article)
-            <div class="card col-12 col-sm-5 col-md-5 col-lg-2 text-center mx-2 mb-3" >
+            <div class="card hover-card col-12 col-sm-5 col-md-5 col-lg-2 text-center mx-2 mb-3" >
                 <x-home.card :article="$article" />
             </div>
         @endforeach
