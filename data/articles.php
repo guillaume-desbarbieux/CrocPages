@@ -1,0 +1,84 @@
+<?php
+
+return [
+    [
+        'id' => 1,
+        'title' => "Ravage",
+        'author' => "René Barjavel",
+        'price' => "10",
+        'imgUrl' => "https://m.media-amazon.com/images/I/81--VV+ZXrL.jpg",
+        'description' => "- Vous ne savez pas ce qui est arrivé ? Tous les moteurs d'avions se sont arrêtés hier à la même heure, juste au moment où le courant flanchait partout. Tous ceux qui s'étaient mis en descente pour atterrir sur la terrasse sont tombés comme une grêle. Vous n'avez rien entendu, là-dessous ? Moi, dans mon petit appartement près du garage, c'est bien un miracle si je n'ai pas été aplati. Quand le bus de la ligne 2 est tombé, j'ai sauté au plafond comme une crêpe... Allez donc jeter un coup d'oeil dehors, vous verrez le beau travail !"
+    ],
+    [
+        'id' => 2,
+        'title' => "1984",
+        'author' => "George Orwell",
+        'price' => "12",
+        'imgUrl' => "https://static.fnac-static.com/multimedia/PE/Images/FR/NR/10/35/01/79120/1507-1/tsp20250103092736/1984.jpg",
+        'description' => "- Vous ne savez pas ce qui est arrivé ? Tous les moteurs d'avions se sont arrêtés hier à la même heure, juste au moment où le courant flanchait partout. Tous ceux qui s'étaient mis en descente pour atterrir sur la terrasse sont tombés comme une grêle. Vous n'avez rien entendu, là-dessous ? Moi, dans mon petit appartement près du garage, c'est bien un miracle si je n'ai pas été aplati. Quand le bus de la ligne 2 est tombé, j'ai sauté au plafond comme une crêpe... Allez donc jeter un coup d'oeil dehors, vous verrez le beau travail !"
+    ],
+    [
+        'id' => 3,
+        'title' => "Fahrenheit 451",
+        'author' => "Ray Bradbury",
+        'price' => "11",
+        'imgUrl' => "https://m.media-amazon.com/images/I/71OFqSRFDgL.jpg",
+        'description' => "- Vous ne savez pas ce qui est arrivé ? Tous les moteurs d'avions se sont arrêtés hier à la même heure, juste au moment où le courant flanchait partout. Tous ceux qui s'étaient mis en descente pour atterrir sur la terrasse sont tombés comme une grêle. Vous n'avez rien entendu, là-dessous ? Moi, dans mon petit appartement près du garage, c'est bien un miracle si je n'ai pas été aplati. Quand le bus de la ligne 2 est tombé, j'ai sauté au plafond comme une crêpe... Allez donc jeter un coup d'oeil dehors, vous verrez le beau travail !"
+    ],
+    [
+        'id' => 4,
+        'title' => "Le Meilleur des mondes",
+        'author' => "Aldous Huxley",
+        'price' => "13",
+        'imgUrl' => "https://m.media-amazon.com/images/I/61v7bRPlQPL._UF1000,1000_QL80_.jpg",
+        'description' => "- Vous ne savez pas ce qui est arrivé ? Tous les moteurs d'avions se sont arrêtés hier à la même heure, juste au moment où le courant flanchait partout. Tous ceux qui s'étaient mis en descente pour atterrir sur la terrasse sont tombés comme une grêle. Vous n'avez rien entendu, là-dessous ? Moi, dans mon petit appartement près du garage, c'est bien un miracle si je n'ai pas été aplati. Quand le bus de la ligne 2 est tombé, j'ai sauté au plafond comme une crêpe... Allez donc jeter un coup d'oeil dehors, vous verrez le beau travail !"
+    ],
+    [
+        'id' => 5,
+        'title' => "La Nuit des temps",
+        'author' => "Barjavel",
+        'price' => "14",
+        'imgUrl' => "https://m.media-amazon.com/images/I/51agfIYIv3L._UF1000,1000_QL80_.jpg",
+        'description' => "- Vous ne savez pas ce qui est arrivé ? Tous les moteurs d'avions se sont arrêtés hier à la même heure, juste au moment où le courant flanchait partout. Tous ceux qui s'étaient mis en descente pour atterrir sur la terrasse sont tombés comme une grêle. Vous n'avez rien entendu, là-dessous ? Moi, dans mon petit appartement près du garage, c'est bien un miracle si je n'ai pas été aplati. Quand le bus de la ligne 2 est tombé, j'ai sauté au plafond comme une crêpe... Allez donc jeter un coup d'oeil dehors, vous verrez le beau travail !"
+    ],
+    [
+        'id' => 6,
+        'title' => "Fondation",
+        'author' => "Isaac Asimov",
+        'price' => "15",
+        'imgUrl' => "https://www.gallimard.fr/system/files/styles/medium/private/migrations/ouvrages/couvertures/A36053.jpg.webp?itok=F4kBRbnD",
+        'description' => "- Vous ne savez pas ce qui est arrivé ? Tous les moteurs d'avions se sont arrêtés hier à la même heure, juste au moment où le courant flanchait partout. Tous ceux qui s'étaient mis en descente pour atterrir sur la terrasse sont tombés comme une grêle. Vous n'avez rien entendu, là-dessous ? Moi, dans mon petit appartement près du garage, c'est bien un miracle si je n'ai pas été aplati. Quand le bus de la ligne 2 est tombé, j'ai sauté au plafond comme une crêpe... Allez donc jeter un coup d'oeil dehors, vous verrez le beau travail !"
+    ],
+    [
+        'id' => 7,
+        'title' => "Dune",
+        'author' => "Frank Herbert",
+        'price' => "16",
+        'imgUrl' => "https://m.media-amazon.com/images/I/61HLU-TCZ8L.jpg",
+        'description' => "- Vous ne savez pas ce qui est arrivé ? Tous les moteurs d'avions se sont arrêtés hier à la même heure, juste au moment où le courant flanchait partout. Tous ceux qui s'étaient mis en descente pour atterrir sur la terrasse sont tombés comme une grêle. Vous n'avez rien entendu, là-dessous ? Moi, dans mon petit appartement près du garage, c'est bien un miracle si je n'ai pas été aplati. Quand le bus de la ligne 2 est tombé, j'ai sauté au plafond comme une crêpe... Allez donc jeter un coup d'oeil dehors, vous verrez le beau travail !"
+    ],
+    [
+        'id' => 8,
+        'title' => "Les Robots",
+        'author' => "Isaac Asimov",
+        'price' => "10",
+        'imgUrl' => "https://m.media-amazon.com/images/I/51DcyR3DuwL._UF1000,1000_QL80_.jpg",
+        'description' => "- Vous ne savez pas ce qui est arrivé ? Tous les moteurs d'avions se sont arrêtés hier à la même heure, juste au moment où le courant flanchait partout. Tous ceux qui s'étaient mis en descente pour atterrir sur la terrasse sont tombés comme une grêle. Vous n'avez rien entendu, là-dessous ? Moi, dans mon petit appartement près du garage, c'est bien un miracle si je n'ai pas été aplati. Quand le bus de la ligne 2 est tombé, j'ai sauté au plafond comme une crêpe... Allez donc jeter un coup d'oeil dehors, vous verrez le beau travail !"
+    ],
+    [
+        'id' => 9,
+        'title' => "Ubik",
+        'author' => "Philip K. Dick",
+        'price' => "9",
+        'imgUrl' => "https://m.media-amazon.com/images/I/61N9jehRGHL._UF1000,1000_QL80_.jpg",
+        'description' => "- Vous ne savez pas ce qui est arrivé ? Tous les moteurs d'avions se sont arrêtés hier à la même heure, juste au moment où le courant flanchait partout. Tous ceux qui s'étaient mis en descente pour atterrir sur la terrasse sont tombés comme une grêle. Vous n'avez rien entendu, là-dessous ? Moi, dans mon petit appartement près du garage, c'est bien un miracle si je n'ai pas été aplati. Quand le bus de la ligne 2 est tombé, j'ai sauté au plafond comme une crêpe... Allez donc jeter un coup d'oeil dehors, vous verrez le beau travail !"
+    ],
+    [
+        'id' => 10,
+        'title' => "Solaris",
+        'author' => "Stanislas Lem",
+        'price' => "12",
+        'imgUrl' => "https://m.media-amazon.com/images/I/61+kEy9J6eL._UF1000,1000_QL80_.jpg",
+        'description' => "- Vous ne savez pas ce qui est arrivé ? Tous les moteurs d'avions se sont arrêtés hier à la même heure, juste au moment où le courant flanchait partout. Tous ceux qui s'étaient mis en descente pour atterrir sur la terrasse sont tombés comme une grêle. Vous n'avez rien entendu, là-dessous ? Moi, dans mon petit appartement près du garage, c'est bien un miracle si je n'ai pas été aplati. Quand le bus de la ligne 2 est tombé, j'ai sauté au plafond comme une crêpe... Allez donc jeter un coup d'oeil dehors, vous verrez le beau travail !"
+    ]
+];
