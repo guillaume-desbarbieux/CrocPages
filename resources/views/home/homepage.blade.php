@@ -23,7 +23,7 @@
                             <a class="nav-link active" aria-current="page" href="{{ route('catalog') }}" >Catalogue</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cart') }}">Panier</a>
+                            <a class="nav-link" href="/cart">Panier</a>
                         </li>
                     </ul>
                 </div>
@@ -128,8 +128,12 @@
 
 @section('footer')
 <<<<<<< HEAD
+<<<<<<< HEAD
     <h4 class="text-center bg-success">footer</h4>
 =======
     <h4>footer</h4>
 >>>>>>> 63d8bb1 (view in view/home)
+=======
+    <h4 class="text-center bg-success">footer</h4>
+>>>>>>> 30fcc2e (fix bug url)
 @endsection
