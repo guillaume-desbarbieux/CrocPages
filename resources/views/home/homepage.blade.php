@@ -23,7 +23,7 @@
                             <a class="nav-link active" aria-current="page" href="/products">Catalogue</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cart') }}">Panier</a>
+                            <a class="nav-link" href="/cart">Panier</a>
                         </li>
                     </ul>
                 </div>
@@ -117,5 +117,5 @@
 @endsection
 
 @section('footer')
-    <h4>footer</h4>
+    <h4 class="text-center bg-success">footer</h4>
 @endsection
