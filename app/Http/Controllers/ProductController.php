@@ -11,7 +11,8 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        return view('product-list');
+        $articles = include base_path('data/articles.php');
+        return view('product-list', compact('articles'));
     }
 
     /**
@@ -19,7 +20,9 @@ class ProductController extends Controller
      */
     public function show(string $id): View
     {
-        return view('product-details', [
-            'id' => $id]);
+        $articles = include base_path('data/articles.php');
+        $article = collect($articles)->firstWhere('id', (int) $id);
+        return view('product-details', 
+            compact('article'));
     }
 }
