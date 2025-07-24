@@ -13,8 +13,14 @@
                     'quantity' => 2,
                     'urlImg' => 'https://www.minus-editions.fr/2270-thickbox_default/si-on-parlait-de-la-mort-livre-a-remplir.jpg'
         ])  --}}
-
-        @yield('products')
+        <div class="row align-items-end">
+            <div class="col-10">
+                @yield('products')
+            </div>
+            <div class="col-2">
+                @yield('total-cart')
+            </div>
+        </div>
     </div>
 </body>
 </html>
