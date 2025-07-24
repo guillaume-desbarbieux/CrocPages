@@ -23,7 +23,7 @@
                             <a class="nav-link active" aria-current="page" href="{{ route('catalog') }}" >Catalogue</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/cart">Panier</a>
+                            <a class="nav-link" href="{{ route('cart') }}">Panier</a>
                         </li>
                     </ul>
                 </div>
