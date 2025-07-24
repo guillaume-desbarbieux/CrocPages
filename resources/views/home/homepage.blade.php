@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/products">Catalogue</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('catalog') }}" >Catalogue</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/cart">Panier</a>

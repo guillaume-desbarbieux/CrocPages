@@ -9,7 +9,7 @@
 
    <header>
     <nav>
-        <a href="{{ route('home') }}">Accueil</a> |
+        <a href="{{ route('homepage') }}">Accueil</a> |
         <a href="{{ route('catalog') }}">Catalogue</a>
     </nav>
 </header>
