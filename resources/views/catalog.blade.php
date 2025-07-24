@@ -22,22 +22,16 @@
         
     </style>
                 <div class="bandeau">
-                    <h1>TOUTES LES PUBLICATIONS</h1>
+                    <h1 class="fs-2">TOUTES LES PUBLICATIONS</h1>
                 </div>
        
-                <div class="row">
-    @foreach($articles as $article)
-        <div class="col-md-4">
-            <div class="card">
-                <img src="{{ $article['imgUrl'] }}" class="card-img-top" alt="{{ $article['title'] }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $article['title'] }}</h5>
-                    <p class="card-text">Auteur : {{ $article['author'] }}</p>
-                    <p class="card-text">Prix : {{ $article['price'] }} €</p>
-                </div>
-            </div>
-        </div>
-    @endforeach
-</div>
 
-    @endsection
+
+<div class="row justify-content-center mt-5">
+        @foreach ($articles as $article)
+            <div class="card col-12 col-sm-5 col-md-5 col-lg-2 text-center mx-2 mb-3" >
+                <x-home.card :article="$article" />
+            </div>
+        @endforeach
+    </div>
+@endsection

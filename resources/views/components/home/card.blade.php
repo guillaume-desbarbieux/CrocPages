@@ -1,17 +1,19 @@
+
 @props(['article'])
     <a class="row h-95" href= {{  route('catalog.show', ['id'=>$article['id']]) }}>
-        <img class="img-fluid object-fit-contain" style="height:400px" src="{{ $article['imgUrl'] }}"
+        <img class="img-fluid object-fit-contain" style="height:350px" src="{{ $article['imgUrl'] }}"
             alt="image de couverture de {{ $article['title'] }} ({{ $article['author'] }})">
     </a>
 
+
     <div class="row">
-        <h3>Titre : {{ $article['title'] }} </h3>
+<h5 class="card-title">{{ $article['title'] }}</h5>
     </div>
 
     <div class="row">
-        <p>Auteur : {{ $article['author'] }}</p>
+                    <p class="card-text">Auteur : {{ $article['author'] }}</p>
     </div>
 
     <div class="row">
-        <p>Prix : {{ $article['price'] }} €</p>
+                    <p class="card-text">Prix : {{ $article['price'] }} €</p>
     </div>
