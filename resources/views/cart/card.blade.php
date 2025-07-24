@@ -6,7 +6,7 @@
         <div class="col-5">
             <div class="row">
                 <h3>{{ $title }}</h3>
-                <h5>{{ $author }}</h5>
+                <p>{{ $author }}</p>
                 <h2>{{ $price }}€</h2>
             </div>
         </div>
