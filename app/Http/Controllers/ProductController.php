@@ -2,27 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class ProductController extends Controller
 {
-    /**
-     * Show the product list.
-     */
     public function index(): View
     {
-        $articles = include base_path('data/articles.php');
-        return view('product-list', compact('articles'));
+        $products = DB::select('SELECT * FROM products');
+        return view('catalog', ['products' => $products]);
     }
 
-    /**
-     * Show the product details.
-     */
-    public function show(string $id): View
+    public function show($id): View
     {
-        $articles = include base_path('data/articles.php');
-        $article = collect($articles)->firstWhere('id', (int) $id);
-        return view('product-details', 
-            compact('article'));
+        $product = DB::select('SELECT * FROM products WHERE id = ?', [$id]);
+
+
+        return view('product-details', ['product' => $product[0]]);
     }
 }

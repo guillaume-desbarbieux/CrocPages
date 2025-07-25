@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\DB;
 
 class CatalogController extends Controller
 {
-    function index(): View
-    {   
-        $articles = include base_path('data/articles.php');
-        return view('catalog', compact('articles'));
+    public function index(): View
+    {
+        $products = DB::select('SELECT * FROM products');
+        return view('catalog', compact('products'));
     }
 }

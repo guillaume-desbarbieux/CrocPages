@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    function index(): View{
-        $articles = include base_path('data/articles.php');
-        return view('homepage', compact('articles'));
+    public function index(): View
+    {
+        // Récupérer les produits de la BDD avec une Raw SQL Query
+        $products = DB::select('SELECT * FROM products');
+
+        // Passer $products à la vue 'homepage'
+        return view('homepage', compact('products'));
     }
 }
