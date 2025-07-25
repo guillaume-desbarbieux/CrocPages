@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     function index(): View{
         $articles = include base_path('data/articles.php');
-        return view('home.homepage', compact('articles'));
+        return view('homepage', compact('articles'));
     }
 }
