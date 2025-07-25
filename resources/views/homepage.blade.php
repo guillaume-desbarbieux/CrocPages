@@ -8,13 +8,8 @@
     <div class="row justify-content-center mt-5">
         @foreach ($articles as $article)
             <div class="card hover-card col-12 col-sm-5 col-md-5 col-lg-2 text-center mx-2 mb-3" >
-                <x-home.card :article="$article" />
+                <x-card :article="$article" />
             </div>
         @endforeach
     </div>
-@endsection
-
-@section('footer')
-    <h4 class="text-center bg-success">footer</h4>
-    <h4>footer</h4>
 @endsection
