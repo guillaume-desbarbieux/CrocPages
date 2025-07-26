@@ -4,7 +4,7 @@
             <p>Produits</p>
         </div>
         <div class="col-6">
-            <p>{{ $totalPrice }}€</p>
+            <p><?= number_format($totalPrice, 2, ',', ' ') . ' €'; ?></p>
         </div>
     </div>
     <div class="row">
@@ -12,7 +12,7 @@
             <p>Livraison</p>
         </div>
         <div class="col-6">
-            <p>{{ $shippingPrice }}€</p>
+            <p><?= number_format($shippingPrice, 2, ',', ' ') . ' €'; ?></p>
         </div>
     <div class="row">
         <div class="col-6">
