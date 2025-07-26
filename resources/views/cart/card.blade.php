@@ -7,7 +7,7 @@
             <div class="row">
                 <h3>{{ $title }}</h3>
                 <p>{{ $author }}</p>
-                <h2>{{ $price }}€</h2>
+                <h2><?= number_format($price, 2, ',', ' ') . ' €'; ?></h2>
             </div>
         </div>
         <div class="col-3">
@@ -16,7 +16,7 @@
                     <input class="form-control w-50" type="number" min="1" max="99" value="{{ $quantity }}"/>
                 </div>
                 <div class="col-6">
-                    <h2>{{ $price * $quantity}}€</h2>
+                    <h2><?= number_format($price * $quantity, 2, ',', ' ') . ' €'; ?></h2>
                 </div>
             </div>
         </div>
