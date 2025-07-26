@@ -16,9 +16,24 @@ class CartItemsSeeder extends Seeder
     public function run(): void
     {
         DB::table('cart_items')->insert([
-            'carts_id' => rand(1, 1),
-            'product_id' => rand(1, 10),
-            'quantity' => rand(1, 5),
+            'cart_id' => 1,
+            'product_id' => 2,
+            'quantity' => 2,
+        ]);
+        DB::table('cart_items')->insert([
+            'cart_id' => 1,
+            'product_id' => 3,
+            'quantity' => 3,
+        ]);
+        DB::table('cart_items')->insert([
+            'cart_id' => 2,
+            'product_id' => 1,
+            'quantity' => 1,
+        ]);
+        DB::table('cart_items')->insert([
+            'cart_id' => 2,
+            'product_id' => 6,
+            'quantity' => 1,
         ]);
     }
 }

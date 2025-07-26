@@ -15,11 +15,25 @@ class CartSeeder extends Seeder
     public function run(): void
     {
         DB::table('carts')->insert([
-            'user_id' => rand(1, 1),
-            'product_id' => rand(1, 10),
+            'user_id' => 1,
             'price' => rand(1, 50),
             'created_at' => now(),
             'updated_at' => now(),
+            'is_paid' => false,
+        ]);
+        DB::table('carts')->insert([
+            'user_id' => 2,
+            'price' => rand(1, 50),
+            'created_at' => now(),
+            'updated_at' => now(),
+            'is_paid' => false,
+        ]);
+        DB::table('carts')->insert([
+            'user_id' => 1,
+            'price' => rand(1, 50),
+            'created_at' => now(),
+            'updated_at' => now(),
+            'is_paid' => true,
         ]);
     }
 }
