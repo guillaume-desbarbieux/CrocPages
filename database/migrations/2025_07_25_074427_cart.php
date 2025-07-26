@@ -19,13 +19,8 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('restrict');
 
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')
-                ->references('id')
-                ->on('products')
-                ->onDelete('restrict');
-
             $table->integer('price')->default(0);
+            $table->boolean('is_paid')->default(false);
             $table->timestamps();
         });
     }
