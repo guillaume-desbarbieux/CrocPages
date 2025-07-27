@@ -10,4 +10,5 @@ Route::get('/', [HomeController::class, 'index'])->name("homepage");
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/Catalog', [CatalogController::class, 'index']) ->name('catalog');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('catalog.show');
+Route::put('/cart/{productId}', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 

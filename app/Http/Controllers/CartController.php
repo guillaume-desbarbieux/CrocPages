@@ -12,6 +12,11 @@ use App\Models\User;
 
 class CartController extends Controller
 {
+    private function getCartUser(int $userId): Cart{
+        $user = User::find($userId);
+        $cart = $user->cart()->where('is_paid', false)->first();
+        return $cart;
+    }
     function index(): View{
 
         // $cart = DB::select('select * from cart');
@@ -28,9 +33,7 @@ class CartController extends Controller
         // @dump($products);
 
         $productsList = [];
-        $user = User::find(2);
-        $cart = $user->cart()->where('is_paid', false)->first();
-        //@dump($cart);
+        $cart = $this->getCartUser(1);
 
         if($cart){
             foreach($cart->items as $item){
@@ -39,10 +42,22 @@ class CartController extends Controller
                 array_push($productsList, $itemWithQuantity);
             }
         }
-        //@dump($productsList);
 
         return view('cart.cart-show', [
             'productsList' => $productsList,
         ]);
+    }
+    function updateQuantity(Request $request, $productId){
+        $request->validate([
+            'quantity' => 'required|integer|min:1|max:99',
+        ]);
+
+        $cart = $this->getCartUser(1);
+
+        $cart->items()->where('product_id', $productId)->update([
+            'quantity' => $request->input('quantity')
+        ]);
+        
+        return redirect()->route('cart');
     }
 }
