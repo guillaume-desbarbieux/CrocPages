@@ -10,11 +10,13 @@ use function Laravel\Prompts\select;
 
 class HomeController extends Controller
 {
+
     function index(): View
     {
-        //$articles = DB::select('select * from products where category_id=1');
-
-        $products = product::where('category_id', "=",2 )->get();
+        //$articles = DB::select('select * from products where tag_id=1');
+        $products = product::orderBy('price', 'asc')
+                            ->orderBy('author', 'asc')
+                            ->get();
 
 
         return view('homepage', compact('products'));

@@ -16,14 +16,14 @@ return new class extends Migration
             $table->string('title');
             $table->string('author');
             $table->longText('description');
-            $table->string('imgURL');
+            $table->string('img_url');
             $table->integer('price');
-            $table->integer('quantity')->default(10);
+            $table->integer('stock')->default(10);
             $table->timestamps();
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')
+            $table->unsignedBigInteger('tag_id');
+            $table->foreign('tag_id')
                 ->references('id')
-                ->on('categories')
+                ->on('tags')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
         });

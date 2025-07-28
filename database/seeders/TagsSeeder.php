@@ -6,21 +6,21 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CategoriesSeeder extends Seeder
+class TagsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $categories = [
+        $tags = [
             ['name' => 'Science-Fiction'],
             ['name' => 'Policier'],
             ['name' => 'Documentaire']
         ];
 
-        foreach ($categories as $category) {
-            DB::table('categories')->insert($category);
+        foreach ($tags as $tag) {
+            DB::table('tags')->insert($tag);
         }
     }
 }

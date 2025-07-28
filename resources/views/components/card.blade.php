@@ -3,7 +3,7 @@
 {{--@dump($product)--}}
 
 <a class="row h-95" href={{  route('catalog.show', ['id' => $product->id]) }}>
-    <img class="img-fluid object-fit-contain" style="height:350px" src="{{ $product->imgURL }}"
+    <img class="img-fluid object-fit-contain" style="height:350px" src="{{ $product->img_url }}"
         alt="image de couverture de {{ $product->title }} ({{ $product->author }})">
 </a>
 
@@ -17,7 +17,7 @@
 </div>
 
 <div class="row">
-    <p class="card-text">Catégorie : {{ $product->category->name }}</p>
+    <p class="card-text">Tag(s) : {{ $product->tag->name }}</p>
 </div>
 
 <div class="row">
