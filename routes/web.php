@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
 
 Route::get('/', [HomeController::class, 'index'])->name("homepage");
-
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
-
-Route::get('/Catalog', [CatalogController::class, 'index']) ->name('catalog');
+Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');
+Route::get('/catalog/title', [CatalogController::class, 'indexByTitle'])->name('catalog.title');
+Route::get('/catalog/price', [CatalogController::class, 'indexByPrice'])->name('catalog.price');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('catalog.show');
-

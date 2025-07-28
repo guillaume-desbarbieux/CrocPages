@@ -4,20 +4,19 @@
 
 @section('content')
 <div class="d-flex gap-3">
-    <img src="{{ $article['imgUrl'] }}" alt="{{ $article['title'] }}" width="350">
+    <img src="{{ $product->img_url }}" alt="{{ $product->title }}" width="350">
     <div>
-        <h1>{{ $article['title'] }}</h1>
-        <h3>{{ $article['author'] }}</h3>
+        <h1>{{ $product->title }}</h1>
+        <h3>{{ $product->author }}</h3>
         <p>Disponibilités: </p>
         <p>Favoris: </p>
-        <p>Prix : {{ $article['price'] }} €</p>
+        <p>Prix : {{ $product->price }} €</p>
         <div class="mt-3">
             <input class="btn btn-success btn-lg" type="button" value="Ajouter au Panier">
         </div>
     </div>
 </div>
 <div class="mt-3">
-    <p>{{ $article['description'] }}</p>
+    <p>{{ $product->description }}</p>
 </div>
-
 @endsection

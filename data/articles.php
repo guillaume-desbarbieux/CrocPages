@@ -1,5 +1,4 @@
 <?php
-
 return [
     [   'title' => "Ravage",
         'author' => "René Barjavel",
