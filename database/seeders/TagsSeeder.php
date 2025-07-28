@@ -6,17 +6,21 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProductsSeeder extends Seeder
+class TagsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $articles = include base_path('data/articles.php');
+        $tags = [
+            ['name' => 'Science-Fiction'],
+            ['name' => 'Policier'],
+            ['name' => 'Documentaire']
+        ];
 
-        foreach ($articles as $article) {
-            DB::table('products')->insert($article);
+        foreach ($tags as $tag) {
+            DB::table('tags')->insert($tag);
         }
     }
 }
