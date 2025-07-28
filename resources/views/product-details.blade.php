@@ -4,9 +4,9 @@
 
 @section('content')
 <div class="d-flex gap-3">
-    <img src="{{ $product->img_url }}" alt="{{ $product->name }}" width="350">
+    <img src="{{ $product->img_url }}" alt="{{ $product->title }}" width="350">
     <div>
-        <h1>{{ $product->name }}</h1>
+        <h1>{{ $product->title }}</h1>
         <h3>{{ $product->author }}</h3>
         <p>Disponibilités: </p>
         <p>Favoris: </p>

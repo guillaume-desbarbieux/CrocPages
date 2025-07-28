@@ -25,6 +25,10 @@
         <h1 class="fs-2">TOUTES LES PUBLICATIONS</h1>
     </div>
 
+    <a href="{{ route('catalog') }}">Par défaut</a> |
+    <a href="{{ route('catalog.title') }}">Trier par nom</a> |
+    <a href="{{ route('catalog.price') }}">Trier par prix</a>
+
     <div class="row justify-content-center mt-5">
         @foreach ($products as $product)
             <div class="card hover-card col-12 col-sm-5 col-md-5 col-lg-2 text-center mx-2 mb-3">

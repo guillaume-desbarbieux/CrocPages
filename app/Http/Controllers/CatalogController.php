@@ -1,15 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 
 class CatalogController extends Controller
 {
-    public function index(): View
+    public function index()
     {
-        $products = DB::select('SELECT * FROM products');
+        $products = Product::all();
+        return view('catalog', compact('products'));
+    }
+
+
+ public function indexByTitle()
+    {
+        $products = Product::orderBy('title', 'asc')->get();
+        return view('catalog', compact('products'));
+    }
+
+    public function indexByPrice()
+    {
+        $products = Product::orderBy('price', 'asc')->get();
         return view('catalog', compact('products'));
     }
 }

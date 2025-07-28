@@ -1,12 +1,13 @@
 @props(['product'])
 
+
 <a class="row h-95" href="{{ route('catalog.show', ['id' => $product->id]) }}">
     <img class="img-fluid object-fit-contain" style="height:350px" src="{{ $product->img_url }}"
-        alt="image de couverture de {{ $product->name }} ({{ $product->author }})">
+        alt="image de couverture de {{ $product->title }} ({{ $product->author }})">
 </a>
 
 <div class="row">
-    <h5 class="card-title">{{ $product->name }}</h5>
+    <h5 class="card-title">{{ $product->title }}</h5>
 </div>
 
 <div class="row">
