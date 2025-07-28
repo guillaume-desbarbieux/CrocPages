@@ -4,25 +4,27 @@
     $totalPrice = 0;
 @endphp
 @section(section: 'products')
-    @foreach ($productsList as $product)
-        <form method="POST" action="{{ route('cart.updateQuantity', ['productId' => $product->id]) }}" class="mt-2" >
-            @csrf
-            @method('PUT')
-            @include('cart.card',[
-                    'title' => $product -> name,
-                    'author' => $product -> author,
-                    'price' => $product -> price,
-                    'quantity' => $product -> quantity,
-                    'urlImg' => $product -> img_url
+    @if (empty($productsList))
+        <p>Aucun produit dans le panier.</p>
+    @else
+        @foreach ($productsList as $product)
+            @include('cart.card', [
+                'id' => $product->id,
+                'title' => $product->name,
+                'author' => $product->author,
+                'price' => $product->price,
+                'quantity' => $product->quantity,
+                'urlImg' => $product->img_url
             ])
-        </form>
-        @php
-            $totalPrice += $product -> price * $product -> quantity; 
-        @endphp
-    @endforeach
+                    @php
+                        $totalPrice += $product->price * $product->quantity; 
+                    @endphp
+        @endforeach
+    @endif
+
 @endsection
 @section('total-cart')
-    @include('cart.total-cart',[
+    @include('cart.total-cart', [
         'totalPrice' => $totalPrice,
     ])
 @endsection

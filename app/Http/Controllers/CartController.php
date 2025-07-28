@@ -17,6 +17,15 @@ class CartController extends Controller
         $cart = $user->cart()->where('is_paid', false)->first();
         return $cart;
     }
+    private function getCart(){
+         $cart = User::find(1)
+                        ->cart()->where('is_paid', false)->first()
+                        ->items()->with('product')
+                        ->get()->sortBy(function($item) {
+                            return ($item->product->price*$item->quantity);
+                        }, 0, false);
+        return $cart;
+    }
     function index(): View{
 
         // $cart = DB::select('select * from cart');
@@ -33,15 +42,17 @@ class CartController extends Controller
         // @dump($products);
 
         $productsList = [];
-        $cart = $this->getCartUser(1);
+        $cart = $this->getCart();
 
-        if($cart){
-            foreach($cart->items as $item){
-                $itemWithQuantity = $item->product;
-                $itemWithQuantity['quantity'] = $item->quantity;
-                array_push($productsList, $itemWithQuantity);
-            }
+        abort_if(!$cart, 404);
+        
+
+        foreach($cart as $item){
+            $itemWithQuantity = $item->product;
+            $itemWithQuantity['quantity'] = $item->quantity;
+            array_push($productsList, $itemWithQuantity);
         }
+        
 
         return view('cart.cart-show', [
             'productsList' => $productsList,
@@ -58,6 +69,13 @@ class CartController extends Controller
             'quantity' => $request->input('quantity')
         ]);
         
+        return redirect()->route('cart');
+    }
+    function removeItem($productId){
+        $cart = $this->getCartUser(1);
+
+        $cart->items()->where('product_id', $productId)->delete();
+
         return redirect()->route('cart');
     }
 }
