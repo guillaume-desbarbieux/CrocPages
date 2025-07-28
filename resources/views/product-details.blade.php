@@ -8,8 +8,16 @@
     <div>
         <h1>{{ $product->title }}</h1>
         <h3>{{ $product->author }}</h3>
-        <p>Disponibilités: </p>
-        <p>Favoris: </p>
+
+        <p>Tag : <span class="badge bg-primary">{{ $product->tag->name ?? 'Aucun' }}</span></p>
+        <p>Disponibilités: 
+            @if($product->stock > 0)
+                En stock ({{ $product->stock }})
+            @else
+                <span class="text-danger">Rupture de stock</span>
+            @endif
+        </p>
+        <p>Favoris: (à implémenter)</p>
         <p>Prix : {{ $product->price }} €</p>
         <div class="mt-3">
             <input class="btn btn-success btn-lg" type="button" value="Ajouter au Panier">
