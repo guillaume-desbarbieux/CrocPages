@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container m-0 p-0">
 
         <h1 class="text-center">Récapitulatif de mon panier</h1>
         
-        <div class="row align-items-end">
-            <div class="col-10">
+        <div class="row justify-content-center">
+            <div class="col-11 col-md-10 m-0 p-0">
                 @yield('products')
             </div>
-            <div class="col-2">
+            <div >
                 @yield('total-cart')
             </div>
         </div>
