@@ -8,6 +8,8 @@
                 <li><a class="dropdown-item" href="{{ route('homepage') }}">Page d'accueil</a></li>
                 <li><a class="dropdown-item" href="{{ route('catalog') }}">Catalogue</a></li>
                 <li><a class="dropdown-item" href="#">Evenements</a></li>
+                <li><a class="dropdown-item" href="{{ route('backoffice') }}">Accès Admin</a></li>
+
             </ul>
         </div>
         <div class="d-flex align-items-center justify-content-center gap-2">
