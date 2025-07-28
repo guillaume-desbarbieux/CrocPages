@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\BackofficeController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name("homepage");
 
@@ -17,3 +19,6 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('catalog.s
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::put('/cart/{productId}', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 Route::delete('/cart/{productId}', [CartController::class, 'removeItem'])->name('cart.removeItem');
+
+
+Route::get('/backoffice', [BackofficeController::class, 'index'])->name('backoffice');
