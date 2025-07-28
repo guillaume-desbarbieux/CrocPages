@@ -10,7 +10,7 @@
         @foreach ($productsList as $product)
             @include('cart.card', [
                 'id' => $product->id,
-                'title' => $product->name,
+                'title' => $product->title,
                 'author' => $product->author,
                 'price' => $product->price,
                 'quantity' => $product->quantity,
