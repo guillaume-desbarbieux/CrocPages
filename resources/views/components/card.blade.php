@@ -15,7 +15,7 @@
 </div>
 
 <div class="row">
-    <p class="card-text">Tag(s) : {{ $product->tag->name }}</p>
+    <p class="card-text">Tag(s) : {{ $product->Tag->name }}</p>
 </div>
 
 <div class="row">

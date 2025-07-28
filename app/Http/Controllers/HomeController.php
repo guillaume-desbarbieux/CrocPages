@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\product;
+use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +14,7 @@ class HomeController extends Controller
     function index(): View
     {
         //$articles = DB::select('select * from products where tag_id=1');
-        $products = product::orderBy('price', 'asc')
+        $products = Product::orderBy('price', 'asc')
                             ->orderBy('author', 'asc')
                             ->get();
 

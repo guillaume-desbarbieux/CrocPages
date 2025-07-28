@@ -26,7 +26,7 @@
     </div>
 
     <a href="{{ route('catalog') }}">Par défaut</a> |
-    <a href="{{ route('catalog.title') }}">Trier par nom</a> |
+    <a href="{{ route('catalog.title') }}">Trier par titre</a> |
     <a href="{{ route('catalog.price') }}">Trier par prix</a>
 
     <div class="row justify-content-center mt-5">
