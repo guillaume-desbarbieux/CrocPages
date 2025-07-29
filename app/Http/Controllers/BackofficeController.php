@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditProductRequest;
 use App\Models\Product;
 
 use Illuminate\Http\Request;
@@ -36,15 +37,20 @@ class BackofficeController extends Controller
         return view('backoffice.create');
     }
 
-        public function save(Request $request)
+    public function save(EditProductRequest $request)
     {
-        $product = new Product($request->all());
-        $product->save();
-        return redirect(route('backoffice.products.index'));
+        try {
+            $validated = $request->validated();
+            $product = new Product($validated);
+            $product->save();
+            return redirect()->route('backoffice.products.show', $product);
+        } catch (\Exception $e) {
+            return back()->withInput()->with('error', 'Une erreur est survenue pour la création du produit :' . $e->getMessage());
+        }
     }
-    public function update(Request $request, $id)
-    {   
-        $success = Product::find($id)->update($request->all());
+    public function update(EditProductRequest $request, $id)
+    {
+        $success = Product::find($id)->update($request->validated());
 
         if ($success) {
             return view('backoffice.edit-success', compact('id'));

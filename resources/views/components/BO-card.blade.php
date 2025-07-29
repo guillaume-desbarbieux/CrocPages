@@ -11,9 +11,11 @@
     <p class="card-text">Auteur : {{ $product->author }}</p>
 </div>
 
+@if($product->tag_id)
 <div class="row">
     <p class="card-text">Tag(s) : {{ $product->Tag->name }}</p>
 </div>
+@endif
 
 <div class="row">
     <p class="col card-text">Prix : {{ number_format($product->price, 2, ',', ' ') }} €</p>

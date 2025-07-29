@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('author');
-            $table->longText('description');
-            $table->string('img_url');
+            $table->longText('description')->nullable();
+            $table->string('img_url')->nullable();
             $table->integer('price');
             $table->integer('stock')->default(10);
             $table->timestamps();
-            $table->unsignedBigInteger('tag_id');
+            $table->unsignedBigInteger('tag_id')->nullable();
             $table->foreign('tag_id')
                 ->references('id')
                 ->on('tags')
