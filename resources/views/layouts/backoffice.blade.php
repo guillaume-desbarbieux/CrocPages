@@ -23,8 +23,8 @@
     <div class="d-flex justify-content-evenly">
         <a href='{{ route('homepage') }}'>Retour au site</a>
         <a href='{{ route('backoffice') }}'>Accueil Admin</a>
-        <a href="{{ route('backoffice.index') }}">Accès à l'inventaire</a>
-        <a href="{{ route('backoffice.testnew') }}">Ajouter une référence</a>
+        <a href="{{ route('backoffice.products.index') }}">Accès à l'inventaire</a>
+        <a href="{{ route('backoffice.products.testnew') }}">Ajouter une référence</a>
     </div>
 
     <div class="container mt-4">

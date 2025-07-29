@@ -20,7 +20,7 @@
         <p>Favoris: (à implémenter)</p>
         <p>Prix : {{ $product->price }} €</p>
         <div class="mt-3">
-            <a href="{{ route('backoffice.edit', [$product->id]) }}" class="btn btn-danger btn-lg" type="button" value="Editer">Editer</a>
+            <a href="{{ route('backoffice.products.edit', [$product->id]) }}" class="btn btn-danger btn-lg" type="button" value="Editer">Editer</a>
         </div>
     </div>
 </div>
