@@ -25,7 +25,8 @@ Route::prefix('backoffice')->group(function () {
 
     Route::prefix('products')->group(function () {
         Route::get('/', [BackofficeController::class, 'index'])->name('backoffice.products.index');
-        Route::get('/new', [BackofficeController::class, 'new'])->name('backoffice.products.new');
+        Route::get('/create', [BackofficeController::class, 'create'])->name('backoffice.products.create');
+        Route::put('/save', [BackofficeController::class, 'save'])->name('backoffice.products.save');
         Route::put('/{id}/update', [BackofficeController::class, 'update'])->name('backoffice.products.update');
         Route::get('/{id}/edit', [BackofficeController::class, 'edit'])->name('backoffice.products.edit');
         Route::get('/{id}/{success?}', [BackofficeController::class, 'show'])->name('backoffice.products.show');

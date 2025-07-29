@@ -12,7 +12,7 @@
         @foreach ($products as $product)
             <div class="card hover-card col-2 text-center mx-2 mb-3">
                 <a class="text-decoration-none text-dark"
-                href="{{ route('backoffice.products.show', ['id' => $product->id, 'success' => null]) }}">
+                href="{{ route('backoffice.products.show', ['id' => $product->id]) }}">
                     <x-BO-card :product="$product" />
                 </a>
             </div>

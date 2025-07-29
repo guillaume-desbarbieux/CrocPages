@@ -24,7 +24,7 @@
         <a href='{{ route('homepage') }}'>Retour au site</a>
         <a href='{{ route('backoffice') }}'>Accueil Admin</a>
         <a href="{{ route('backoffice.products.index') }}">Accès à l'inventaire</a>
-        <a href="{{ route('backoffice.products.new') }}">Ajouter une référence</a>
+        <a href="{{ route('backoffice.products.create') }}">Ajouter une référence</a>
     </div>
 
     <div class="container mt-4">
