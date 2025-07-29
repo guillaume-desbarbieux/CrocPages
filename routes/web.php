@@ -21,7 +21,12 @@ Route::put('/cart/{productId}', [CartController::class, 'updateQuantity'])->name
 Route::delete('/cart/{productId}', [CartController::class, 'removeItem'])->name('cart.removeItem');
 
 
-Route::get('/backoffice/product', [BackofficeController::class, 'index'])->name('backoffice');
-Route::get('/backoffice/product/{id}', [BackofficeController::class, 'show'])->name('backoffice.product');
-Route::get('/backoffice/product/{id}/edit', [BackofficeController::class, 'edit'])->name('backoffice.product.edit');
+Route::get('/backoffice/product', action: [BackofficeController::class, 'index'])->name('backoffice');
+Route::get('/backoffice/product/create', action: [BackofficeController::class, 'create'])->name('backoffice.product.create');
+Route::put('/backoffice/product/save', action: [BackofficeController::class, 'save'])->name('backoffice.product.save');
+Route::get('/backoffice/product/{id}/edit', [BackofficeController::class, 'showEdit'])->name('backoffice.product.edit');
+Route::get('/backoffice/product/{id}/{isUpdate?}', [BackofficeController::class, 'show'])->name('backoffice.product');
+
+
 Route::put('/backoffice/product/{id}', [BackofficeController::class, 'update'])->name('backoffice.product.update');
+Route::delete('/backoffice/product/{id}', [BackofficeController::class, 'delete'])->name('backoffice.product.delete');

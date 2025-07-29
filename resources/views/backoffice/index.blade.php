@@ -8,7 +8,9 @@
     <div class="row">
         <h1>Bienvenue sur votre accès Administrateur</h1>
     </div>
-
+    <div class="row">
+        <a href="{{ route('backoffice.product.create') }}">Ajouter un livre</a>
+    </div>
     <div class="row justify-content-center mt-5">
 
         @foreach ($products as $product)
