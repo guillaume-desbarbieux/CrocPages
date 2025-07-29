@@ -1,6 +1,6 @@
 @extends('layouts.backoffice')
 @section('title', 'Backoffice')
-
+@dump($errors->has('img_url'))
 @section('content')
     <div class="container">
         <div class="row">
@@ -16,26 +16,26 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="imgUrl">Url image</label>
-                <input type="text" name="img_url" value=""/>
+                <input class="form-control {{ $errors->has('img_url') ? 'is-invalid' : 'is-valid'}}" type="text" name="img_url" value=""/>
             </div>
             <div class="col-6">
                 @error('title')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="title">Titre :</label>
-                <input id="title" type="text" name="title" value="" />
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : 'is-valid'}}" id="title" type="text" name="title" value="" />
 
                 @error('author')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="author">Auteur :</label>
-                <input id="author" type="text" name="author" value="" />
+                <input class="form-control {{ $errors->has('author') ? 'is-invalid' : 'is-valid'}}" id="author" type="text" name="author" value="" />
 
                 @error('tag')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="tag">Tag(s) :</label>
-                <select id="tag" name="tag_id">
+                <select class="form-control is-valid" id="tag" name="tag_id">
                     @foreach ($tags as $tag)
                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @endforeach
@@ -46,7 +46,7 @@
                 @enderror
                 <div class="row">
                     <label for="description">Description :</label>
-                    <textarea id="description" name="description"
+                    <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : 'is-valid'}}" id="description" name="description"
                         style="height: 20vw; width: 40vw;"></textarea>
                 </div>
                 
@@ -54,13 +54,13 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="price">Prix :</label>
-                <input id="price" type="number" name="price" value="" />
+                <input class="form-control {{ $errors->has('price') ? 'is-invalid' : 'is-valid'}}" id="price" type="number" name="price" value="" />
 
                 @error('stock')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="stock">Stock :</label>
-                <input id="stock" type="number" name="stock" value="" />
+                <input class="form-control {{ $errors->has('stock') ? 'is-invalid' : 'is-valid'}}" id="stock" type="number" name="stock" value="" />
 
                 <div class="row justify-content-center mt-3">
                     <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
