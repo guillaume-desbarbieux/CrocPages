@@ -24,3 +24,4 @@ Route::delete('/cart/{productId}', [CartController::class, 'removeItem'])->name(
 Route::get('/backoffice/product', [BackofficeController::class, 'index'])->name('backoffice');
 Route::get('/backoffice/product/{id}', [BackofficeController::class, 'show'])->name('backoffice.product');
 Route::get('/backoffice/product/{id}/edit', [BackofficeController::class, 'edit'])->name('backoffice.product.edit');
+Route::put('/backoffice/product/{id}', [BackofficeController::class, 'update'])->name('backoffice.product.update');
