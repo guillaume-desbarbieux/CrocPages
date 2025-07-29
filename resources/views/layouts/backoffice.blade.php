@@ -7,23 +7,30 @@
     <title>@yield('title', 'Mon site')</title>
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
-    .gradient-header {
-        background: linear-gradient(to bottom, #f7e89b 0%, #ffffff 100%);
-    }
     </style>
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-<header>
 
+
+<header>
 </header>
+
+
     <div class="container">
         <a href='{{ route('homepage') }}'>Retour au site</a>
     </div>
+    <div class="container">
+        <a href='{{ route('backoffice.product') }}'>Vos produits</a>
+    </div>
+    
 
 <div class="container mt-4">
     @yield('content')
 </div>
+
+
+
 
 <footer class="bg-dark text-white text-center py-3 mt-4">
     Mon Backoffice
