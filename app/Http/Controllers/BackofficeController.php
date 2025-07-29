@@ -29,6 +29,7 @@ class BackofficeController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->update($request->all());
+        
         return redirect()->route('backoffice.product', ['id' => $id]);
     }
 }
