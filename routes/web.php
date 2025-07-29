@@ -23,10 +23,11 @@ Route::delete('/cart/{productId}', [CartController::class, 'removeItem'])->name(
 Route::prefix('backoffice')->group(function () {
     Route::get('/', [BackofficeController::class, 'home'])->name('backoffice');
 
-    Route::prefix('product')->group(function () {
+    Route::prefix('products')->group(function () {
         Route::get('/', [BackofficeController::class, 'index'])->name('backoffice.products.index');
-        Route::get('/{id}', [BackofficeController::class, 'show'])->name('backoffice.products.show');
+        Route::get('/new', [BackofficeController::class, 'new'])->name('backoffice.products.new');
+        Route::put('/{id}/update', [BackofficeController::class, 'update'])->name('backoffice.products.update');
         Route::get('/{id}/edit', [BackofficeController::class, 'edit'])->name('backoffice.products.edit');
-        Route::get('/new', [BackofficeController::class, 'testnew'])->name('backoffice.products.testnew');
+        Route::get('/{id}/{success?}', [BackofficeController::class, 'show'])->name('backoffice.products.show');
     });
 });

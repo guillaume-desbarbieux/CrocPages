@@ -20,10 +20,10 @@ class BackofficeController extends Controller
         return view('backoffice.index', compact('products'));
     }
 
-    public function show($id)
+    public function show($id, $success=null)
     {
         $product = Product::findOrFail($id);
-        return view('backoffice.show', compact('product'));
+        return view('backoffice.show', compact(['product', 'success']));
     }
 
     public function edit($id)
@@ -31,9 +31,14 @@ class BackofficeController extends Controller
         $product = Product::findOrFail($id);
         return view('backoffice.edit', compact('product'));
     }
-    public function testnew()
+    public function new()
     {
-        dd("je suis là");
         return view('backoffice.new');
+    }
+    public function update(Request $request, $productId)
+    {
+        $success = Product::find($productId)->update($request->all());
+
+        return redirect(route('backoffice.products.show', ['id' => $productId, 'success' => $success]));
     }
 }

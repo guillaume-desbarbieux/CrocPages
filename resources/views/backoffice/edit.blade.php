@@ -4,28 +4,38 @@
 
 @section('content')
     <h1 class="text-center bg-warning"> Page d'édition</h1>
-    <div class="d-flex gap-3">
-        <img src="{{ $product->img_url }}" alt="{{ $product->title }}" width="350">
-        <div>
-            <h1>{{ $product->title }}</h1>
-            <h3>{{ $product->author }}</h3>
+    <form method="post" action="{{ route('backoffice.products.update', ['id' => $product->id]) }}">
+        @csrf
+        @method('PUT')
+        <div class="d-flex gap-3">
+            <img src="{{ $product->img_url }}" alt="{{ $product->title }}" width="350">
+            <div>
+                <label for="title">Titre :</label>
+                <input type="text" id="title" name="title" value="{{ $product->title }}">
 
-            <p>Tag : <span class="badge bg-primary">{{ $product->tag->name ?? 'Aucun' }}</span></p>
-            <p>Disponibilités:
-                @if($product->stock > 0)
-                    En stock ({{ $product->stock }})
-                @else
-                    <span class="text-danger">Rupture de stock</span>
-                @endif
-            </p>
-            <p>Favoris: (à implémenter)</p>
-            <p>Prix : {{ $product->price }} €</p>
-            <div class="mt-3">
-                <input class="btn btn-danger btn-lg" type="button" value="Supprimer">
+                <label for="author">Auteur :</label>
+                <input type="text" id="author" name="author" value="{{ $product->author }}"><br>
+
+                <label for="description">Description :</label>
+                <textarea type="text" id="description" name="description" rows="10"
+                    cols="100"> {{ $product->description }}</textarea><br>
+
+                <label for="img_url">Image :</label>
+                <textarea type="text" id="img_url" name="img_url" rows="1"
+                    cols="100">{{ $product->img_url }}</textarea><br>
+
+                <label for="tag">Tag :</label>
+                <input type="number" id="tag" name="tag_id" value={{ $product->tag_id }}>
+
+                <label for="stock">Stock :</label>
+                <input type="number" id="stock" name="stock" value={{ $product->stock }}>
+
+                <label for="price">Prix :</label>
+                <input type="number" id="price" name="price" value={{ $product->price }}><br>
+                <div class="mt-3">
+                    <input class="btn btn-warning btn-lg" type="submit" value="Valider les changements">
+                </div>
             </div>
         </div>
-    </div>
-    <div class="mt-3">
-        <p>{{ $product->description }}</p>
-    </div>
+    </form>
 @endsection
