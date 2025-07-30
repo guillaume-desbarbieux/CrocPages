@@ -62,7 +62,7 @@
             @enderror
             <label for="price">Prix :</label>
             <input class="form-control {{ $errors->has('price') ? 'is-invalid' : (old('price') ? 'is-valid' : '')}}"
-                id="price" type="number" name="price" value="{{ old('price') ?? $product->price }}" />
+                id="price" type="text" name="price" value="{{ old('price') ?? $product->price }}" />
 
             @error('stock')
                 <div class="text-danger">{{ $message }}</div>
