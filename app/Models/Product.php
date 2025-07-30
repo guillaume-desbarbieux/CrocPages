@@ -11,7 +11,7 @@ class product extends Model
 
     public function tag()
     {
-        return $this->belongsTo(Tag::class);
+        return $this->belongsToMany(Tag::class, 'tag_product');
     }
     public function isSame(UpdateProductRequest $request): array{
 
