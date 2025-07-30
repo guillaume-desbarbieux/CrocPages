@@ -45,6 +45,7 @@ class CartController extends Controller
         }
 
 
+
         return view('cart.cart-show', [
             'productsList' => $productsList,
         ]);
@@ -60,6 +61,7 @@ class CartController extends Controller
             'quantity' => $request->input('quantity')
         ]);
 
+
         return redirect()->route('cart');
     }
     function removeItem($productId)
@@ -71,7 +73,7 @@ class CartController extends Controller
         return redirect()->route('cart');
     }
 
-    function addItem($productId)
+    function addItem($productId, $quantity)
     {
         $cart =  Auth::user()->getCart();
         $isAdded = $cart->addItem($productId);

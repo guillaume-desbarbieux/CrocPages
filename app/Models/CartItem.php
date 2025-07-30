@@ -11,9 +11,13 @@ class CartItem extends Model
 
     public function cart()
     {
+    public function cart()
+    {
         return $this->belongsTo(Cart::class);
     }
 
+    public function product()
+    {
     public function product()
     {
         return $this->belongsTo(Product::class);
@@ -22,12 +26,5 @@ class CartItem extends Model
     public function quantity()
     {
         return $this->quantity;
-    }
-
-    public function addOne()
-    {
-        $this->quantity += 1;
-        $this->save();    
-
     }
 }
