@@ -51,7 +51,7 @@
 <form action="{{ route('admin.catalog.delete', ['id' => $product->id]) }}" method="POST" class="mt-3">
     @csrf
     @method('DELETE')
-    <button type="submit" class="btn btn-danger">Supprimer</button>
+    <button type="submit" class="btn btn-danger">Supprimer </button>
 </form>
 
 @endsection
