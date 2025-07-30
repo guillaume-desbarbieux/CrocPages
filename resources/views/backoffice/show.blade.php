@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-        
+
         @endif
         <div class="row justify-content-center">
             <div class="col-3">
@@ -42,8 +42,19 @@
                 <p>Description : {{ $product->description }}</p>
                 <h3>Prix : {{ number_format($product->price, 2, ',', ' ') }} €</h3>
                 <h4>Stock : {{ $product->stock }}</h4>
-                <a href="{{ route('backoffice.product.edit', ['id' => $product->id]) }}"
-                    class="btn btn-primary">Modifier</a>
+
+                <div class="row justify-content-evenly">
+                    <div class="col-4">
+                        <a href="{{ route('backoffice.product.edit', ['id' => $product->id]) }}" class="btn btn-primary">Modifier</a>
+                    </div>
+                    <div class="col-4">
+                        <form method="POST" action="{{  route('backoffice.product.delete', ['id' => $product->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class=" btn btn-danger" value="Supprimer">
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 
