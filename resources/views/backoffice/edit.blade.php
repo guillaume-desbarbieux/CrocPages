@@ -3,6 +3,10 @@
 @section('title', 'Produits')
 
 @section('content')
+<x-product-form :product="$product"/>
+@endsection
+
+{{-- 
     <h1 class="text-center bg-warning"> Page d'édition</h1>
 
     <form method="post" action="{{ route('backoffice.products.update', ['id' => $product->id]) }}">
@@ -65,3 +69,5 @@
         </div>
     </form>
 @endsection
+
+--}}
