@@ -15,10 +15,11 @@
 </div>
 
 
-@if()
-<div class="row">
-    <p class="card-text">Tag(s) : {{ $product->Tag->name ??}}</p>
-</div>
+@if(isset($product->tag_id))
+    <div class="row">
+        <p class="card-text">Tag(s) : {{ $product->Tag->name}}</p>
+    </div>
+@endif
 
 <div class="row">
     <p class="col card-text">Prix : {{ number_format($product->price, 2, ',', ' ') }} €</p>
