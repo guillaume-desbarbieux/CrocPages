@@ -16,10 +16,10 @@ class BackofficeController extends Controller
         return view('backoffice.index', compact('products'));
     }
 
-    function show($id, $isUpdate = null)
+    function show($id, $action = null)
     {
         $product = Product::findOrFail($id);
-        return view('backoffice.show', compact('product'), ['isUpdate' => $isUpdate]);
+        return view('backoffice.show', compact('product'), ['action' => $action]);
     }
     function showEdit($id)
     {
@@ -29,9 +29,19 @@ class BackofficeController extends Controller
     }
     function update(UpdateProductRequest $request, $id)
     {
+        $action = null;
         $isUpdate = Product::findOrFail($id)->update($request->validated());
+        
+        $listErrors = Product::findOrFail($id)->isSame($request);
+       
+        
+        if($isUpdate === true && $listErrors === []){
+            $action = "updated";
+        }else{
+            $action = "unUpdated";
+        }
 
-        return redirect()->route('backoffice.product', ['id' => $id, 'isUpdate' => $isUpdate]);
+        return redirect()->route('backoffice.product', ['id' => $id, 'action' => $action]);
     }
     function delete($id)
     {
@@ -46,8 +56,12 @@ class BackofficeController extends Controller
     }
     function save(UpdateProductRequest $request){
 
-        Product::create($request->validated());
+        $action = null;
+        $newProduct = Product::create($request->validated());
+        if($newProduct){
+            $action = "created";
+        }
 
-        return redirect()->route('backoffice');
+        return redirect()->route('backoffice.product', ['id' => $newProduct->id, 'action' => $action]);
     }
 }

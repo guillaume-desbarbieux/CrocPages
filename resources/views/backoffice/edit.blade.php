@@ -3,42 +3,56 @@
 
 
 @section('content')
-    <div class="container">
+@include('components.form-product', [
+        'product' => $product, 
+        'route' => route('backoffice.product.update', ['id' => $product->id]), 
+        'title' => 'Modification d\'un produit', 
+        'textButton' => 'Enregistrer les modifications'
+    ])
+    {{-- <div class="container">
         <div class="row">
             <h1>Modification du produit : {{ $product->title }}</h1>
         </div>
 
-        <form method="POST" action="{{ route('backoffice.product.update', ['id' => $product->id]) }}"
+        <form class="needs-validation"  method="POST" action="{{ route('backoffice.product.update', ['id' => $product->id]) }}"
             class="row justify-content-center">
             @csrf
             @method('PUT')
             <div class="col-6">
-                @error('img_url')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-                <label for="imgUrl">Url image</label>
-                <input type="text" name="img_url" value="{{ $product->img_url }}"/>
-                <img class="img-fluid" src="{{ $product->img_url }}" alt="Image de couverture de {{ $product->title }}">
+                <div class="row">
+                    @error('img_url')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                    <label for="imgUrl">Url image</label>
+                    <input
+                        class="form-control {{ $errors->has('img_url') ? 'is-invalid' : (old('img_url') ? 'is-valid' : '')}}"
+                        type="text" name="img_url" value="{{ old('img_url') ?? $product->img_url }}" />
+                </div>
+                <div class="row">
+                    <img src="{{ old('img_url') ?? $product->img_url }}" alt="image du livre" />
+                </div>
             </div>
             <div class="col-6">
                 @error('title')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="title">Titre :</label>
-                <input id="title" type="text" name="title" value="{{ $product->title }}" />
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : (old('title') ? 'is-valid' : '')}}"
+                    id="title" type="text" name="title" value="{{ old('title') ?? $product->title }}" />
 
                 @error('author')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="author">Auteur :</label>
-                <input id="author" type="text" name="author" value="{{ $product->author }}" />
+                <input class="form-control {{ $errors->has('author') ? 'is-invalid' : (old('author') ? 'is-valid' : '')}}"
+                    id="author" type="text" name="author" value="{{ old('author') ?? $product->author }}" />
 
                 @error('tag')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="tag">Tag(s) :</label>
-                <select id="tag" name="tag_id">
-                    <option value="{{ $product->tag_id }}">{{ $product->tag->name}}</option>
+                <select class="form-control {{ $errors->has('tag_id') ? 'is-invalid' : (old('tag_id') ? 'is-valid' : '')}}"
+                    id="tag" name="tag_id">
                     @foreach ($tags as $tag)
                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @endforeach
@@ -49,21 +63,25 @@
                 @enderror
                 <div class="row">
                     <label for="description">Description :</label>
-                    <textarea id="description" name="description"
-                        style="height: 20vw; width: 40vw;">{{ $product->description }}</textarea>
+                    <textarea
+                        class="form-control {{ $errors->has('description') ? 'is-invalid' : (old('description') ? 'is-valid' : '')}}"
+                        id="description" name="description"
+                        style="height: 20vw; width: 40vw;">{{ old('description') ?? $product->description}}</textarea>
                 </div>
-                
+
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="price">Prix :</label>
-                <input id="price" type="number" name="price" value="{{ $product->price }}" />
+                <input class="form-control {{ $errors->has('price') ? 'is-invalid' : (old('price') ? 'is-valid' : '')}}"
+                    id="price" type="number" name="price" value="{{ old('price') ?? $product->price }}" />
 
                 @error('stock')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
                 <label for="stock">Stock :</label>
-                <input id="stock" type="number" name="stock" value="{{ $product->stock }}" />
+                <input class="form-control {{ $errors->has('stock') ? 'is-invalid' : (old('stock') ? 'is-valid' : '')}}"
+                    id="stock" type="number" name="stock" value="{{ old('stock') ?? $product->stock }}" />
 
                 <div class="row justify-content-center mt-3">
                     <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
@@ -71,5 +89,5 @@
             </div>
         </form>
 
-    </div>
+    </div> --}}
 @endsection

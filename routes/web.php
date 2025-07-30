@@ -25,7 +25,7 @@ Route::get('/backoffice/product', action: [BackofficeController::class, 'index']
 Route::get('/backoffice/product/create', action: [BackofficeController::class, 'create'])->name('backoffice.product.create');
 Route::put('/backoffice/product/save', action: [BackofficeController::class, 'save'])->name('backoffice.product.save');
 Route::get('/backoffice/product/{id}/edit', [BackofficeController::class, 'showEdit'])->name('backoffice.product.edit');
-Route::get('/backoffice/product/{id}/{isUpdate?}', [BackofficeController::class, 'show'])->name('backoffice.product');
+Route::get('/backoffice/product/{id}/{action?}', [BackofficeController::class, 'show'])->name('backoffice.product');
 
 
 Route::put('/backoffice/product/{id}', [BackofficeController::class, 'update'])->name('backoffice.product.update');

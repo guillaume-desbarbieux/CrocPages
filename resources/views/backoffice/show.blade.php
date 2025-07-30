@@ -1,13 +1,12 @@
 @extends('layouts.backoffice')
 @section('title', 'Backoffice')
 
-
 @section('content')
     <div class="container">
         <div class="row">
             <h1>Gestion du produit : {{ $product->title }}</h1>
         </div>
-        @if ($isUpdate === '1')
+        @if ($action === 'updated')
             <div class="row justify-content-center">
                 <div class="col-4">
                     <div class="alert alert-success" role="alert">
@@ -15,14 +14,23 @@
                     </div>
                 </div>
             </div>
-        @elseif ($isUpdate === '0')
+        @elseif ($action === 'created')
             <div class="row justify-content-center">
                 <div class="col-4">
-                    <div class="alert alert-danger" role="alert">
-                        <p class="text-center">Echec de la mise a jour.</p>
+                    <div class="alert alert-success" role="alert">
+                        <p class="text-center">Le produit a été créer avec succès.</p>
                     </div>
                 </div>
             </div>
+        @elseif ($action === "unUpdated")
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <div class="alert alert-danger" role="alert">
+                        <p class="text-center">Echec de la mise a jour du produit.</p>
+                    </div>
+                </div>
+            </div>
+        
         @endif
         <div class="row justify-content-center">
             <div class="col-6">
