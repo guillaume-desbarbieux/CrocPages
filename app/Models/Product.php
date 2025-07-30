@@ -5,11 +5,11 @@ namespace App\Models;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Database\Eloquent\Model;
 
-class product extends Model
+class Product extends Model
 {
     protected $fillable = ['title', 'author', 'price', 'description', 'stock', 'img_url', 'tag_id'];
 
-    public function tag()
+    public function tags()
     {
         return $this->belongsToMany(Tag::class, 'tag_product');
     }
