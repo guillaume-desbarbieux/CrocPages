@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Tag;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class UpdateProductRequest extends FormRequest
         return [
             'title' => 'required',
             'author' => 'required|max:255',
-            'tag_id' => 'required|numeric|min:0',
+            'tag_id' => 'required|exists:tags,id',
             'description' => 'required',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|numeric|min:0',
@@ -38,7 +39,6 @@ class UpdateProductRequest extends FormRequest
             'author.required' => 'L’auteur est obligatoire.',
             'author.max' => 'L’auteur ne peut pas dépasser 255 caractères.',
 
-            'tag_id.required' => 'Le tag est obligatoire.',
             'tag_id.numeric' => 'Le tag doit être un identifiant numérique.',
             'tag_id.min' => 'Le tag doit être supérieur ou égal à 0.',
 

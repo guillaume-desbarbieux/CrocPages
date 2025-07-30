@@ -42,7 +42,7 @@
             <select class="form-control {{ $errors->has('tag_id') ? 'is-invalid' : (old('tag_id') ? 'is-valid' : '')}}"
                 id="tag" name="tag_id">
                 @foreach ($tags as $tag)
-                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    <option value="{{ $tag->id }}" {{ $tag->id == $product->tag_id ? "selected":"" }}>{{ $tag->name }}</option>
                 @endforeach
             </select>
             @error('tag')
