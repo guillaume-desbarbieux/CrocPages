@@ -17,13 +17,13 @@ return new class extends Migration
             $table->foreign('cart_id')
                 ->references('id')
                 ->on('carts')
-                ->onDelete(action: 'restrict');
+                ->onDelete(action: 'cascade');
 
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
-                ->onDelete('restrict');
+                ->onDelete('cascade');
 
             $table->integer('quantity')->default(1);
         });

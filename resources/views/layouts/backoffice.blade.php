@@ -20,6 +20,9 @@
     <div class="container">
         <a href='{{ route('homepage') }}'>Retour au site</a>
     </div>
+    <div class="container">
+        <a href='{{ route('admin.catalog.addmenu') }}'>Ajouter un produit</a>
+    </div>
 
 <div class="container mt-4">
     @yield('content')
@@ -29,6 +32,8 @@
     Mon Backoffice
 </footer>
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+@yield('script')
 </body>
 </html>

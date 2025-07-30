@@ -1,7 +1,7 @@
 @props(['product'])
 
 
-<a class="row h-95" href="{{ route('catalog.show', ['id' => $product->id]) }}">
+<a class="row h-95" href="{{ route('admin.catalog.show', ['id' => $product->id]) }}">
     <img class="img-fluid object-fit-contain" style="height:350px" src="{{ $product->img_url }}"
         alt="image de couverture de {{ $product->title }} ({{ $product->author }})">
 </a>
