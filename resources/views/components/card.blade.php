@@ -14,8 +14,10 @@
     <p class="card-text">Auteur : {{ $product->author }}</p>
 </div>
 
+
+@if()
 <div class="row">
-    <p class="card-text">Tag(s) : {{ $product->Tag->name }}</p>
+    <p class="card-text">Tag(s) : {{ $product->Tag->name ??}}</p>
 </div>
 
 <div class="row">
