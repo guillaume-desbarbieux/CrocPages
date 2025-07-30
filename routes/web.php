@@ -17,6 +17,7 @@ Route::get('/catalog/price', [CatalogController::class, 'indexByPrice'])->name('
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('catalog.show');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::get('/cart/add/{product_id}/{quantity}', [CartController::class, 'addItem'])->name('cart.add');
 Route::put('/cart/{productId}', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 Route::delete('/cart/{productId}', [CartController::class, 'removeItem'])->name('cart.removeItem');
 

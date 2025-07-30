@@ -12,21 +12,24 @@ use App\Models\User;
 
 class CartController extends Controller
 {
-    private function getCartUser(int $userId): Cart{
+    private function getCartUser(int $userId): Cart
+    {
         $user = User::find($userId);
         $cart = $user->cart()->where('is_paid', false)->first();
         return $cart;
     }
-    private function getCart(){
-         $cart = User::find(1)
-                        ->cart()->where('is_paid', false)->first()
-                        ->items()->with('product')
-                        ->get()->sortBy(function($item) {
-                            return ($item->product->price*$item->quantity);
-                        }, 0, false);
+    private function getCart()
+    {
+        $cart = User::find(1)
+            ->cart()->where('is_paid', false)->first()
+            ->items()->with('product')
+            ->get()->sortBy(function ($item) {
+                return ($item->product->price * $item->quantity);
+            }, 0, false);
         return $cart;
     }
-    function index(): View{
+    function index(): View
+    {
 
         // $cart = DB::select('select * from cart');
         // @dump($cart);
@@ -45,20 +48,21 @@ class CartController extends Controller
         $cart = $this->getCart();
 
         abort_if(!$cart, 404);
-        
 
-        foreach($cart as $item){
+
+        foreach ($cart as $item) {
             $itemWithQuantity = $item->product;
             $itemWithQuantity['quantity'] = $item->quantity;
             array_push($productsList, $itemWithQuantity);
         }
-        
+
 
         return view('cart.cart-show', [
             'productsList' => $productsList,
         ]);
     }
-    function updateQuantity(Request $request, $productId){
+    function updateQuantity(Request $request, $productId)
+    {
         $request->validate([
             'quantity' => 'required|integer|min:1|max:99',
         ]);
@@ -68,14 +72,22 @@ class CartController extends Controller
         $cart->items()->where('product_id', $productId)->update([
             'quantity' => $request->input('quantity')
         ]);
-        
+
         return redirect()->route('cart');
     }
-    function removeItem($productId){
+    function removeItem($productId)
+    {
         $cart = $this->getCartUser(1);
 
         $cart->items()->where('product_id', $productId)->delete();
 
         return redirect()->route('cart');
+    }
+
+    function addItem($productId, $quantity)
+    {
+        $cart = Cart::first();
+        $cart->addItem($productId, $quantity);
+        return true;
     }
 }
