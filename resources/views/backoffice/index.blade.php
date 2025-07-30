@@ -5,16 +5,20 @@
 @section('content')
 
 
-    <div class="row">
+    <div class="row text-center mt-4">
         <h1>Bienvenue sur votre accès Administrateur</h1>
     </div>
-    <div class="row">
-        <a href="{{ route('backoffice.product.create') }}">Ajouter un livre</a>
-    </div>
-    <div class="row justify-content-center mt-5">
+    @if($isDeleted == 1)
+        <div class="row justify-content-center">
+                <div class="col-4 alert alert-success">
+                    <p class="text-center">Le produit a été supprimé.</p>
+                </div>
+        </div>
+    @endif
+    <div class="row justify-content-center">
 
         @foreach ($products as $product)
-            <div class="col-2">
+            <div class="col-2" >
                 @include('components.card-back-office', ['product' => $product] )
             </div>
         @endforeach

@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class BackofficeController extends Controller
 {
-    public function index()
+    public function index($isDeleted = null)
     {
         $products = Product::all();
 
-        return view('backoffice.index', compact('products'));
+        return view('backoffice.index', compact('products'), ['isDeleted' => $isDeleted]);
     }
 
     function show($id, $action = null)
@@ -41,14 +41,13 @@ class BackofficeController extends Controller
             $action = "unUpdated";
         }
 
-        return redirect()->route('backoffice.product', ['id' => $id, 'action' => $action]);
+        return redirect()->route('backoffice.product.show', ['id' => $id, 'action' => $action]);
     }
     function delete($id)
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
+        $isDeleted = Product::findOrFail($id)->delete();
 
-        return redirect()->route('backoffice');
+        return redirect()->route('backoffice.product.index', ['isDeleted' => $isDeleted]);
     }
     function create(){
         $tags = Tag::all();
@@ -62,6 +61,6 @@ class BackofficeController extends Controller
             $action = "created";
         }
 
-        return redirect()->route('backoffice.product', ['id' => $newProduct->id, 'action' => $action]);
+        return redirect()->route('backoffice.product.show', ['id' => $newProduct->id, 'action' => $action]);
     }
 }

@@ -33,10 +33,10 @@
         
         @endif
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-3">
                 <img class="img-fluid" src="{{ $product->img_url }}" alt="Image de couverture de {{ $product->title }}">
             </div>
-            <div class="col-6">
+            <div class="col-9">
                 <h3>Auteur : {{ $product->author }}</h3>
                 <p>Tag(s) : {{ $product->Tag->name }}</p>
                 <p>Description : {{ $product->description }}</p>

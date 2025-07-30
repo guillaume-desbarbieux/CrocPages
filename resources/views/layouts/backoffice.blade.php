@@ -11,14 +11,16 @@
 </head>
 
 <body>
-    <header>
-        <a href='{{ route('homepage') }}'>Retour au site</a>
+    <header class="d-flex justify-content-evenly"> 
+            <a href='{{ route('homepage') }}'>Retour au site</a>
+            <a href="{{ route('backoffice.product.index') }}">Accès a l'inventaire</a>
+            <a href="{{ route('backoffice.product.create') }}">Ajouter un livre</a>
     </header>
 
     <main>
-         @yield('content')
+        @yield('content')
     </main>
-       
+
 
     <footer class="bg-dark text-white text-center py-3 mt-4">
         Mon Backoffice
