@@ -37,6 +37,7 @@ class CartController extends Controller
         abort_if(!$cart, 404);
 
 
+
         foreach ($cart as $item) {
             $itemWithQuantity = $item->product;
             $itemWithQuantity['quantity'] = $item->quantity;
