@@ -5,16 +5,24 @@
 @section('content')
 
 
-    <div>
+    <div class="row text-center mt-4">
         <h1>Bienvenue sur votre accès Administrateur</h1>
     </div>
+    @if($isDeleted == 1)
+        <div class="row justify-content-center">
+                <div class="col-4 alert alert-success">
+                    <p class="text-center">Le produit a été supprimé.</p>
+                </div>
+        </div>
+    @endif
+    <div class="row justify-content-center">
 
-    <div class="row justify-content-center mt-5">
         @foreach ($products as $product)
-            <div class="card hover-card col-12 col-sm-5 col-md-5 col-lg-2 text-center mx-2 mb-3">
-                <x-card :product="$product" />
+            <div class="col-2" >
+                @include('components.card-back-office', ['product' => $product] )
             </div>
         @endforeach
+
     </div>
 
 @endsection
