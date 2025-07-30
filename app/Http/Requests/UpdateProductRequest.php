@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Tag;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class UpdateProductRequest extends FormRequest
         return [
             'title' => 'required',
             'author' => 'required|max:255',
-            'tag_id' => 'required|numeric|min:1',
+            'tag_id' => 'required|exists:tags,id',
             'description' => 'required',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|numeric|min:0',
