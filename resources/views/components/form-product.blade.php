@@ -3,7 +3,7 @@
         <h1>{{ $title }}</h1>
     </div>
 
-    <form class="needs-validation" method="POST" action="{{ $route }}" class="row justify-content-center">
+    <form  method="POST" action="{{ $route }}" class="row justify-content-center">
         @csrf
         @method('PUT')
         <div class="col-6">
@@ -17,7 +17,7 @@
                     type="text" name="img_url" value="{{ old('img_url') ?? $product->img_url }}" />
             </div>
             <div class="row">
-                <img src="{{ old('img_url') ?? $product->img_url }}" alt="image du livre" />
+                <img src="{{ old('img_url') ?? $product->img_url }}" style="height: 40vw" alt="image du livre" />
             </div>
         </div>
         <div class="col-6">
