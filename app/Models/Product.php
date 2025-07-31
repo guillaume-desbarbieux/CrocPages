@@ -13,11 +13,15 @@ class Product extends Model
     {
         return $this->belongsToMany(Tag::class, 'tag_product');
     }
-    public function isSame(UpdateProductRequest $request): array{
+    public function isSame(UpdateProductRequest $request): array
+    {
 
         $listErrors = [];
-        foreach($request->validated() as $key=>$value){
-            if($value != $this->$key){
+        foreach ($request->validated() as $key => $value) {
+            if (!array_key_exists($key, $this->getAttributes())) {
+                continue;
+            }
+            if ($value != $this->$key) {
                 array_push($listErrors, [$key => $value]);
             }
         }
