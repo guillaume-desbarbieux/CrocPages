@@ -8,6 +8,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\BackofficeController;
 use App\Http\Controllers\WishController;
+use App\Http\Controllers\MapController;
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name("homepage");
@@ -43,5 +45,5 @@ Route::delete('/cart/{productId}', [CartController::class, 'removeItem'])->name(
 
 Route::put('/backoffice/product/{id}', [BackofficeController::class, 'update'])->name('backoffice.product.update');
 Route::delete('/backoffice/product/{id}', [BackofficeController::class, 'delete'])->name('backoffice.product.delete');
-
+Route::get('/map', [MapController::class, 'index'])->name('map');
 require __DIR__ . '/auth.php';
