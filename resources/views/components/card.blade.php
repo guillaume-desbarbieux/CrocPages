@@ -27,6 +27,9 @@
     <p class="col card-text  fw-bold">{{ number_format($product->price, 2, ',', ' ') }} €</p>
 </div>
 
+
+{{--  --}}
+
 @php
     $wish = Wish::where('product_id', '=', $product->id)->where('user_id', '=', 1)->first();
 @endphp
