@@ -11,7 +11,6 @@
     <title>@yield('title', 'Mon site')</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
-<<<<<<< HEAD
         .gradient-header {
             background: linear-gradient(to bottom, #f7e89b 0%, #ffffff 100%);
         }
@@ -30,35 +29,13 @@
     @endif
 
     <div class="container">
-=======
-    .gradient-header {
-        background: linear-gradient(to bottom, #f7e89b 25%, #ffffff 100%);
-    }
-
-    
-    </style>
-
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-
-<body>
-
-
-<header class='mb-3 sticky-top'>
- <x-promo-banner>Promo du jour</x-promo-banner>
-    <div class="container-fluid p-0">
->>>>>>> bc1969f (header, map, homepage)
         <x-navbar></x-navbar>
     </div>
 </header>
 
-<<<<<<< HEAD
     <div class="container mt-4">
         @yield('content')
     </div>
-=======
-@yield('content')
->>>>>>> bc1969f (header, map, homepage)
 
     <footer class="bg-dark text-white text-center py-3 mt-4">
         © 2025 - Mon site
@@ -67,7 +44,6 @@
         © 2025 - Mon site
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
