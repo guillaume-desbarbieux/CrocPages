@@ -7,14 +7,14 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\BackofficeController;
-
+use App\Http\Controllers\WishController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name("homepage");
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/product/wish/add/{product_id}', [WishController::class, 'add'])->name('product.wish.add');
+Route::get('/product/wish/remove/{product_id}', [WishController::class, 'remove'])->name('product.wish.remove');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

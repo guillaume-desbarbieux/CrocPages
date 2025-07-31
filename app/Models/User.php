@@ -49,6 +49,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class);
     }
+
+
+    public function wishList()
+    {
+        return $this->hasMany(Wish::class);
+    }
     public function getCart(){
         return $this->cart()->where('is_paid', '=', false)->first();
     }
