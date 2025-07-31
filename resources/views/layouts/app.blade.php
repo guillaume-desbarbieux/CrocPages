@@ -35,7 +35,7 @@
             <div class="alert alert-danger text-center m-0">Ce produit est en rupture de stock.</div>
         @endif
 
-        {{-- @include('layouts.navigation') --}}
+
 
         <div class="container">
             <x-navbar></x-navbar>
