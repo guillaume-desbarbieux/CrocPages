@@ -1,6 +1,7 @@
 @props(['product'])
 
 
+
 <a class="row h-95" href="{{ route('catalog.show', ['id' => $product->id]) }}">
     <img class="img-fluid object-fit-contain" style="height:350px" src="{{ $product->img_url }}"
         alt="image de couverture de {{ $product->title }} ({{ $product->author }})">
@@ -13,10 +14,10 @@
 <div class="row">
     <p class="card-text">Auteur : {{ $product->author }}</p>
 </div>
-@if($product->tag_id != 1)
-    <div class="row">
-        <p class="card-text">Tag(s) : {{ $product->Tag->name }}</p>
-    </div>
+@if($product->tags->isNotEmpty())
+<div class="row">
+    <p class="card-text">Tag(s) : {{ $product->tags->pluck('name')->join(', ') }}</p>
+</div>
 @endif
 
 <div class="row">

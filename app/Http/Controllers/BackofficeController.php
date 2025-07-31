@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\Tag;
+use App\Models\TagProduct;
 use Illuminate\Http\Request;
 
 class BackofficeController extends Controller
@@ -30,7 +31,10 @@ class BackofficeController extends Controller
     function update(UpdateProductRequest $request, $id)
     {
         $action = null;
-        $isUpdate = Product::findOrFail($id)->update($request->validated());
+        $product = Product::findOrFail($id);
+        $product->update($request->except('tag_id'));
+        $product->tags()->sync($request->input('tag_id', []));
+        $isUpdate = true;
         
         $listErrors = Product::findOrFail($id)->isSame($request);
        
@@ -56,7 +60,8 @@ class BackofficeController extends Controller
     function save(UpdateProductRequest $request){
 
         $action = null;
-        $newProduct = Product::create($request->validated());
+        $newProduct = Product::create($request->except('tag_id'));
+        $newProduct->tags()->sync($request->input('tag_id', []));
         if($newProduct){
             $action = "created";
         }

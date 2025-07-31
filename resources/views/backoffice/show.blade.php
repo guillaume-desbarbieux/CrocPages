@@ -38,7 +38,7 @@
             </div>
             <div class="col-9">
                 <h3>Auteur : {{ $product->author }}</h3>
-                <p>Tag(s) : {{ $product->Tag->name }}</p>
+                <p>Tag(s) : {{ $product->tags->pluck('name')->join(', ') }}</p>
                 <p>Description : {{ $product->description }}</p>
                 <h3>Prix : {{ number_format($product->price, 2, ',', ' ') }} €</h3>
                 <h4>Stock : {{ $product->stock }}</h4>

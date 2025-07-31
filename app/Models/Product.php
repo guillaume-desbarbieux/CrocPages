@@ -5,19 +5,23 @@ namespace App\Models;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Database\Eloquent\Model;
 
-class product extends Model
+class Product extends Model
 {
     protected $fillable = ['title', 'author', 'price', 'description', 'stock', 'img_url', 'tag_id'];
 
-    public function tag()
+    public function tags()
     {
-        return $this->belongsTo(Tag::class);
+        return $this->belongsToMany(Tag::class, 'tag_product');
     }
-    public function isSame(UpdateProductRequest $request): array{
+    public function isSame(UpdateProductRequest $request): array
+    {
 
         $listErrors = [];
-        foreach($request->validated() as $key=>$value){
-            if($value != $this->$key){
+        foreach ($request->validated() as $key => $value) {
+            if (!array_key_exists($key, $this->getAttributes())) {
+                continue;
+            }
+            if ($value != $this->$key) {
                 array_push($listErrors, [$key => $value]);
             }
         }
