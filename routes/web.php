@@ -7,6 +7,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\BackofficeController;
+use App\Http\Controllers\MapController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WishController;
 use App\Http\Controllers\MapController;
 use App\Http\Middleware\EnsureUserIsAdmin;
@@ -16,7 +18,7 @@ Route::get('/', [HomeController::class, 'index'])->name("homepage");
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');
 Route::get('/catalog/title', [CatalogController::class, 'indexByTitle'])->name('catalog.title');
 Route::get('/catalog/price', [CatalogController::class, 'indexByPrice'])->name('catalog.price');
-
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('catalog.show');
 
 Route::get('/map', [MapController::class, 'index'])->name('map');
