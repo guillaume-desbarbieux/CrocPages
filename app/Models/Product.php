@@ -17,6 +17,9 @@ class Product extends Model
     {
         $listErrors = [];
         foreach ($request->validated() as $key => $value) {
+            if (!array_key_exists($key, $this->getAttributes())) {
+                continue;
+            }
             if ($value != $this->$key) {
                 array_push($listErrors, [$key => $value]);
             }
