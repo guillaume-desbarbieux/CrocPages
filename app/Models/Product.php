@@ -27,4 +27,9 @@ class Product extends Model
         }
         return $listErrors;
     }
+
+    public function wishUsers()
+    {
+        return $this->hasMany(User::class);
+    }
 }

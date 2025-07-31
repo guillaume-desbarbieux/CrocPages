@@ -8,9 +8,15 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\BackofficeController;
 use App\Http\Controllers\MapController;
 
+use App\Http\Controllers\WishController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name("homepage");
+
+Route::get('/product/wish/add/{product_id}', [WishController::class, 'add'])->name('product.wish.add');
+Route::get('/product/wish/remove/{product_id}', [WishController::class, 'remove'])->name('product.wish.remove');
+
+
 
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');
 Route::get('/catalog/title', [CatalogController::class, 'indexByTitle'])->name('catalog.title');

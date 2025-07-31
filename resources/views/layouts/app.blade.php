@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,17 +22,12 @@
    <header class='mb-3 sticky-top'>
  <x-promo-banner>Promo du jour</x-promo-banner>
     <div class="container-fluid p-0">
-        <x-navbar></x-navbar>
-    </div>
-</header>
+
+    </header>
     @if(session('isAdded') === true) <div class="alert alert-success text-center m-0">Produit ajouté au panier !</div>
     @elseif(session('isAdded') === false)
         <div class="alert alert-danger text-center m-0">Ce produit est en rupture de stock.</div>
     @endif
-
-
-
-
 
    
   @yield('content')
