@@ -73,7 +73,7 @@ class CartController extends Controller
         return redirect()->route('cart');
     }
 
-    function addItem($productId, $quantity)
+    function addItem($productId)
     {
         $cart =  Auth::user()->getCart();
         $isAdded = $cart->addItem($productId);
