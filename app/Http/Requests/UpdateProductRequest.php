@@ -25,7 +25,7 @@ class UpdateProductRequest extends FormRequest
         return [
             'title' => 'required',
             'author' => 'required|max:255',
-            'tag_id' => 'required|exists:tags,id',
+            'tag_id' => 'exists:tags,id',
             'description' => 'required',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|numeric|min:0',

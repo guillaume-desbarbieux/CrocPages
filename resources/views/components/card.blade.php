@@ -14,14 +14,11 @@
 <div class="row">
     <p class="card-text">{{ $product->author }}</p>
 </div>
-
+@if($product->tags->isNotEmpty())
 <div class="row">
-    @if($product->tag_id != 1)
-        <p class="card-text fst-italic fw-light">{{ $product->Tag->name }}</p>
-    @else
-        <p></p>
-    @endif
+    <p class="card-text">Tag(s) : {{ $product->tags->pluck('name')->join(', ') }}</p>
 </div>
+@endif
 
 <div class="row">
     <p class="col card-text  fw-bold">{{ number_format($product->price, 2, ',', ' ') }} €</p>
