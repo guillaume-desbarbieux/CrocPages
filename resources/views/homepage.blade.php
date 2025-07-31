@@ -79,20 +79,6 @@
             <h1 class="fs-2">Meilleures Ventes</h1>
         </div>
 
-<<<<<<< HEAD
-    <div class="row mx-0 my-2 text-center bg-warning-subtle ">
-        <h2>Meilleures Ventes</h2>
-    </div>
-
-    <div class="row justify-content-center mt-5">
-        @foreach ($products as $product)
-            @if ($product->stock > 0)
-                <div class="card hover-card col-12 col-sm-5 col-md-5 col-lg-2 text-center mx-2 mb-3">
-                    <x-card :product="$product"/>
-                </div>
-            @endif
-        @endforeach
-=======
         <div class="row justify-content-center mt-5">
             @foreach ($products as $product)
                 @if ($product->stock > 0)
@@ -102,6 +88,5 @@
                 @endif
             @endforeach
         </div>
->>>>>>> bc1969f (header, map, homepage)
     </div>
 @endsection
