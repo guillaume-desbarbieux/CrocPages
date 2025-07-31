@@ -107,6 +107,6 @@ class CartController extends Controller
     {
         $cart = Cart::first();
         $isAdded = $cart->addItem($productId);
-        return back()->with('isAdded',$isAdded);
+        return back()->with('isAdded', $isAdded);
     }
 }
