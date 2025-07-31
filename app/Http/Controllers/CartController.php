@@ -64,9 +64,8 @@ class CartController extends Controller
     function updateQuantity(Request $request, $productId)
     {
         $request->validate([
-            'quantity' => 'required|integer|min:1|max:99',
+            'quantity' => 'required|integer|min:1|max:' . Product::find($productId)->stock,
         ]);
-
         $cart = $this->getCartUser(1);
 
         $cart->items()->where('product_id', $productId)->update([
@@ -88,6 +87,6 @@ class CartController extends Controller
     {
         $cart = Cart::first();
         $isAdded = $cart->addItem($productId);
-        return back()->with('isAdded',$isAdded);
+        return back()->with('isAdded', $isAdded);
     }
 }
