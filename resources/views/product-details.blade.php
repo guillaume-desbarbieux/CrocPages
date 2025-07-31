@@ -21,7 +21,8 @@
             <p>Favoris: (à implémenter)</p>
             <p>Prix : {{ $product->price }} €</p>
             <div class="mt-3">
-                <input class="btn btn-success btn-lg" type="button" value="Ajouter au Panier">
+                <a class="btn btn-success btn-lg" type="button"
+                    href="{{ route('cart.add', ['product_id' => $product->id, 'quantity' => "1"]) }}">Ajouter au Panier</a>
             </div>
         </div>
     </div>

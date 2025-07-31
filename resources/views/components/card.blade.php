@@ -14,14 +14,15 @@
     <p class="card-text">Auteur : {{ $product->author }}</p>
 </div>
 @if($product->tag_id != 1)
-<div class="row">
-    <p class="card-text">Tag(s) : {{ $product->Tag->name }}</p>
-</div>
+    <div class="row">
+        <p class="card-text">Tag(s) : {{ $product->Tag->name }}</p>
+    </div>
 @endif
 
 <div class="row">
     <p class="col card-text">Prix : {{ number_format($product->price, 2, ',', ' ') }} €</p>
-    <a class="position-absolute bottom-0 end-0 object-fit-content" href="{{ route('cart') }}" style="width: 4em;">
+    <a class="position-absolute bottom-0 end-0 object-fit-content"
+        href="{{ route('cart.add', ['product_id' => $product->id, 'quantity' => "1"]) }}" style="width: 4em;">
         <img class="img-fluid" src="{{ asset('images/logobasket.svg') }}" alt="logo panier">
     </a>
 </div>
