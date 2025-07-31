@@ -22,9 +22,7 @@
         <a href="{{ route('cart') }}">
             <img src="{{ asset('images/logobasket.svg') }}" alt="logo panier" style="height: 3em">
         </a>
-        <a href="#">
-            <img src="{{ asset('images/Profil.svg') }}" alt="Profil utilisateur" style="height: 3em">
-        </a>
+        @include('components.button-profil')
     </div>
 </nav>
 <x-search></x-search>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
@@ -13,26 +13,53 @@
             background: linear-gradient(to bottom, #f7e89b 0%, #ffffff 100%);
         }
     </style>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
-    <header>
-        <x-promo-banner>Promo du jour</x-promo-banner>
-    </header>
-    @if(session('isAdded') === true) <div class="alert alert-success text-center m-0">Produit ajouté au panier !</div>
-    @elseif(session('isAdded') === false)
-        <div class="alert alert-danger text-center m-0">Ce produit est en rupture de stock.</div>
-    @endif
+<body class="font-sans antialiased">
+    <div class="min-h-screen bg-gray-100">
+        <header>
+            <x-promo-banner>Promo du jour</x-promo-banner>
+        </header>
+        @if(session('isAdded') === true)
+            <div class="alert alert-success text-center m-0">Produit ajouté au panier !</div>
+        @elseif(session('isAdded') === false)
+            <div class="alert alert-danger text-center m-0">Ce produit est en rupture de stock.</div>
+        @endif
 
-    <div class="container">
-        <x-navbar></x-navbar>
+        {{-- @include('layouts.navigation') --}}
+
+        <div class="container">
+            <x-navbar></x-navbar>
+        </div>
+        <div class="container mt-4">
+            @yield('content')
+        </div>
+
+        <!-- Page Heading -->
+        @isset($header)
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
+        @endisset
+
+        <!-- Page Content -->
+        <main>
+            @if(isset($slot))
+                {{ $slot }}
+            @endif
+        </main> 
     </div>
-
-    <div class="container mt-4">
-        @yield('content')
-    </div>
-
     <footer class="bg-dark text-white text-center py-3 mt-4">
         © 2025 - Mon site
     </footer>
