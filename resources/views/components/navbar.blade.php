@@ -8,7 +8,10 @@
                 <li><a class="dropdown-item" href="{{ route('homepage') }}">Page d'accueil</a></li>
                 <li><a class="dropdown-item" href="{{ route('catalog') }}">Catalogue</a></li>
                 <li><a class="dropdown-item" href="#">Evenements</a></li>
-                <li><a class="dropdown-item" href="{{ route('backoffice.product.index') }}">Accès Admin</a></li>
+                
+                @if(Auth::check() && Auth::user()->is_admin)
+                    <li><a class="dropdown-item" href="{{ route('backoffice.product.index') }}">Accès Admin</a></li>
+                @endif
 
             </ul>
         </div>
