@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\BackofficeController;
+use App\Http\Controllers\MapController;
+
 use App\Http\Controllers\WishController;
 
 
@@ -37,3 +39,5 @@ Route::get('/backoffice/product/{id}/{action?}', [BackofficeController::class, '
 
 Route::put('/backoffice/product/{id}', [BackofficeController::class, 'update'])->name('backoffice.product.update');
 Route::delete('/backoffice/product/{id}', [BackofficeController::class, 'delete'])->name('backoffice.product.delete');
+
+Route::get('/map', [MapController::class, 'index'])->name('map');
