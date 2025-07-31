@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CatalogController extends Controller
 
