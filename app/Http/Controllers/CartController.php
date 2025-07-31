@@ -103,10 +103,10 @@ class CartController extends Controller
         return redirect()->route('cart');
     }
 
-    function addItem($productId, $quantity)
+    function addItem($productId)
     {
         $cart = Cart::first();
-        $cart->addItem($productId, $quantity);
-        return true;
+        $isAdded = $cart->addItem($productId);
+        return back()->with('isAdded',$isAdded);
     }
 }

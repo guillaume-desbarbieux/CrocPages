@@ -27,4 +27,11 @@ class CartItem extends Model
     {
         return $this->quantity;
     }
+
+    public function addOne()
+    {
+        $this->quantity += 1;
+        $this->save();    
+
+    }
 }
