@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CartItem extends Model
 {
-    protected $fillable = ['quantity'];
+    protected $fillable = ['quantity', 'cart_id', 'product_id'];
     public $timestamps = false;
 
     public function cart()
@@ -22,5 +22,12 @@ class CartItem extends Model
     public function quantity()
     {
         return $this->quantity;
+    }
+
+    public function addOne()
+    {
+        $this->quantity += 1;
+        $this->save();    
+
     }
 }
