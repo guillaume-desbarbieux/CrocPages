@@ -20,9 +20,9 @@
     <header>
         <x-promo-banner>Promo du jour</x-promo-banner>
     </header>
-    @if(session('isAdded') === true) <div class="alert alert-success text-center">Produit ajouté au panier !</div>
+    @if(session('isAdded') === true) <div class="alert alert-success text-center m-0">Produit ajouté au panier !</div>
     @elseif(session('isAdded') === false)
-        <div class="alert alert-danger text-center">Ce produit est en rupture de stock.</div>
+        <div class="alert alert-danger text-center m-0">Ce produit est en rupture de stock.</div>
     @endif
 
     <div class="container">
