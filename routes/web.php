@@ -32,6 +32,24 @@ Route::middleware('auth')->group((function(){
     Route::get('/backoffice/product/{id}/{action?}', [BackofficeController::class, 'show'])->name('backoffice.product.show');
 }));
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('auth')->group((function(){
+    Route::get('/backoffice/product/index/{isDeleted?}', action: [BackofficeController::class, 'index'])->name('backoffice.product.index');
+    Route::get('/backoffice/product/create', action: [BackofficeController::class, 'create'])->name('backoffice.product.create');
+    Route::put('/backoffice/product/save', action: [BackofficeController::class, 'save'])->name('backoffice.product.save');
+    Route::get('/backoffice/product/{id}/edit', [BackofficeController::class, 'showEdit'])->name('backoffice.product.edit');
+    Route::get('/backoffice/product/{id}/{action?}', [BackofficeController::class, 'show'])->name('backoffice.product.show');
+}));
+
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');
 Route::get('/catalog/title', [CatalogController::class, 'indexByTitle'])->name('catalog.title');
 Route::get('/catalog/price', [CatalogController::class, 'indexByPrice'])->name('catalog.price');
