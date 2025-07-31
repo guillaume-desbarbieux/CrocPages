@@ -13,14 +13,19 @@ class product extends Model
     {
         return $this->belongsTo(Tag::class);
     }
-    public function isSame(UpdateProductRequest $request): array{
-
+    public function isSame(UpdateProductRequest $request): array
+    {
         $listErrors = [];
-        foreach($request->validated() as $key=>$value){
-            if($value != $this->$key){
+        foreach ($request->validated() as $key => $value) {
+            if ($value != $this->$key) {
                 array_push($listErrors, [$key => $value]);
             }
         }
         return $listErrors;
+    }
+
+    public function wishUsers()
+    {
+        return $this->hasMany(User::class);
     }
 }
