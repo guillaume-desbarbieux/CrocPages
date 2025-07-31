@@ -14,7 +14,7 @@ class TagsSeeder extends Seeder
     public function run(): void
     {
         $tags = [
-            ['name' => 'Aucun-tag'],
+            ['name' => 'Manga'],
             ['name' => 'Science-Fiction'],
             ['name' => 'Policier'],
             ['name' => 'Documentaire']
