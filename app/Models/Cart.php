@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use function PHPUnit\Framework\isEmpty;
-
 class Cart extends Model
 {
 
