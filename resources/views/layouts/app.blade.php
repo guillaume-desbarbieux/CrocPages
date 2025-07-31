@@ -19,10 +19,12 @@
 
 
 <body>
+    
    <header class='mb-3 sticky-top'>
  <x-promo-banner>Promo du jour</x-promo-banner>
     <div class="container-fluid p-0">
-
+        <x-navbar></x-navbar>
+    </div>
     </header>
     @if(session('isAdded') === true) <div class="alert alert-success text-center m-0">Produit ajouté au panier !</div>
     @elseif(session('isAdded') === false)
