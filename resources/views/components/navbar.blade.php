@@ -5,7 +5,8 @@
 
             {{-- Menu burger --}}
             <div class="dropdown-center">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
                     <img src="{{ asset('images/menuburger.svg') }}" alt="menu burger" height="30">
                 </button>
                 <ul class="dropdown-menu">
@@ -14,7 +15,9 @@
                     <li><a class="dropdown-item" href="#">Événements</a></li>
                     <li><a class="dropdown-item" href="{{ route('map') }}">Trouver la boutique</a></li>
 
-                    <li><a class="dropdown-item" href="{{ route('backoffice.product.index') }}">Admin</a></li>
+                    @if(Auth::check() && Auth::user()->is_admin)
+                        <li><a class="dropdown-item" href="{{ route('backoffice.product.index') }}">Accès Admin</a></li>
+                    @endif
                 </ul>
             </div>
 
@@ -32,9 +35,7 @@
                 <a href="{{ route('cart') }}">
                     <img src="{{ asset('images/logobasket.svg') }}" alt="Panier" style="height: 3em;">
                 </a>
-                <a href="#">
-                    <img src="{{ asset('images/Profil.svg') }}" alt="Profil" style="height: 3em;">
-                </a>
+                @include('components.button-profil')
             </div>
         </div>
     </nav>
@@ -42,7 +43,8 @@
     {{-- BARRE DE RECHERCHE CENTRÉE --}}
     <div class="container d-flex justify-content-center my-3">
         <form class="d-flex" role="search" style="max-width: 600px; width: 100%;">
-            <input class="form-control me-2 mb-3" type="search" placeholder="Recherchez un livre..." aria-label="Search">
+            <input class="form-control me-2 mb-3" type="search" placeholder="Recherchez un livre..."
+                aria-label="Search">
             <button class="btn btn-success mb-3" type="submit">Recherchez</button>
         </form>
     </div>

@@ -15,7 +15,6 @@ class Product extends Model
     }
     public function isSame(UpdateProductRequest $request): array
     {
-
         $listErrors = [];
         foreach ($request->validated() as $key => $value) {
             if (!array_key_exists($key, $this->getAttributes())) {

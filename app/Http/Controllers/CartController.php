@@ -9,45 +9,39 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    private function getCartUser(int $userId): Cart
+    private function getCartUser(): Cart
     {
-        $user = User::find($userId);
+        $user = Auth::user();
         $cart = $user->cart()->where('is_paid', false)->first();
         return $cart;
     }
     private function getCart()
     {
-        $cart = User::find(1)
-            ->cart()->where('is_paid', false)->first()
-            ->items()->with('product')
-            ->get()->sortBy(function ($item) {
-                return ($item->product->price * $item->quantity);
-            }, 0, false);
-        return $cart;
+
+        $user = User::find(Auth::id());
+        if($user == null){
+            return view('auth.login');
+        }
+
+        $cart = User::find(Auth::id())->cart()->where('is_paid','=', false)->first();
+        
+        if($cart == null){
+            $cart = Cart::create(['is_paid' => false, 'user_id' => Auth::id()]);
+        }
+
+        return $cart->items()->get();
     }
     function index(): View
     {
-
-        // $cart = DB::select('select * from cart');
-        // @dump($cart);
-        // $cart = Cart::where('user_id', 1)->first()->id;
-        // @dump($cart);
-        // $cart = Cart::all();
-        // @dump($cart);
-
-        //$products = Product::all();
-
-        // $cartOfUser = Cart::where('user_id', 2)->where('is_paid', false)->first()->id;
-        // $products = CartItem::where('cart_id', $cartOfUser);
-        // @dump($products);
-
         $productsList = [];
         $cart = $this->getCart();
-
+        
         abort_if(!$cart, 404);
+
 
 
         foreach ($cart as $item) {
@@ -55,6 +49,7 @@ class CartController extends Controller
             $itemWithQuantity['quantity'] = $item->quantity;
             array_push($productsList, $itemWithQuantity);
         }
+
 
 
         return view('cart.cart-show', [
@@ -66,17 +61,18 @@ class CartController extends Controller
         $request->validate([
             'quantity' => 'required|integer|min:1|max:' . Product::find($productId)->stock,
         ]);
-        $cart = $this->getCartUser(1);
+        $cart = $this->getCartUser(Auth::id());
 
         $cart->items()->where('product_id', $productId)->update([
             'quantity' => $request->input('quantity')
         ]);
 
+
         return redirect()->route('cart');
     }
     function removeItem($productId)
     {
-        $cart = $this->getCartUser(1);
+        $cart = $this->getCartUser(Auth::id());
 
         $cart->items()->where('product_id', $productId)->delete();
 
@@ -85,7 +81,10 @@ class CartController extends Controller
 
     function addItem($productId)
     {
-        $cart = Cart::first();
+        if(!Auth::check()){
+            return redirect()->route('profile.edit')->with('warning', 'Veillez vous connecter pour utiliser le panier !');
+        }
+        $cart =  Auth::user()->getCart();
         $isAdded = $cart->addItem($productId);
         return back()->with('isAdded', $isAdded);
     }
