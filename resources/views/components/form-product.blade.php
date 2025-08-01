@@ -50,6 +50,19 @@
                 </option>
                 @endforeach
             </select>
+            
+         <div class="mt-2 mb-3">
+    <a href="{{ route('tags.create') }}" class="btn btn-primary">Ajouter un nouveau tag</a>
+</div>
+
+
+            
+        
+        @error('new_tag')
+        <div class="text-danger">{{ $message }}</div>
+        @enderror
+        
+
             @error('tag')
             <div class="text-danger">{{ $message }}</div>
             @enderror
