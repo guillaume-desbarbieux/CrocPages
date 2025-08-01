@@ -39,9 +39,6 @@
     @endif
 
 
-    <div class="container">
-        <x-navbar></x-navbar>
-    </div>
     <div class="container mt-4">
         @yield('content')
     </div>

@@ -27,7 +27,13 @@ class CartController extends Controller
             return view('auth.login');
         }
 
-        return User::find(Auth::id())->cart()->where('is_paid','=', false)->first()->items()->get();
+        $cart = User::find(Auth::id())->cart()->where('is_paid','=', false)->first();
+        
+        if($cart == null){
+            $cart = Cart::create(['is_paid' => false, 'user_id' => Auth::id()]);
+        }
+
+        return $cart->items()->get();
     }
     function index(): View
     {
@@ -75,6 +81,9 @@ class CartController extends Controller
 
     function addItem($productId)
     {
+        if(!Auth::check()){
+            return redirect()->route('profile.edit')->with('warning', 'Veillez vous connecter pour utiliser le panier !');
+        }
         $cart =  Auth::user()->getCart();
         $isAdded = $cart->addItem($productId);
         return back()->with('isAdded', $isAdded);
