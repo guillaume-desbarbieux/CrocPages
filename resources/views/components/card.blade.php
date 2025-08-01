@@ -43,10 +43,10 @@
 {{-- -----------------affichage du bouton wish------------------ --}}
 
 @php
-    $wish = Wish::where('product_id', '=', $product->id)->where('user_id', '=', 1)->first();
+    $wished = (Auth::check() && Wish::where('product_id', '=', $product->id)->where('user_id', '=', Auth::user()->id)->first())
 @endphp
 
-@if(isset($wish))
+@if($wished)
     <a class="position-absolute top-0 end-0 object-fit-content btn btn-light p-1"
         href="{{ route('product.wish.remove', ['product_id' => $product->id]) }}" style="width: 2.5em;">
         <img class="img-fluid" src="{{ asset('images/Wish.png') }}" alt="Favori" title="retirer de mes favoris">

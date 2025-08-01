@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Wish;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WishController extends Controller
 {
@@ -14,14 +15,14 @@ class WishController extends Controller
 
     public function add($product_id)
     {
-        $user_id = User::first()->id;
+        $user_id = Auth::user()->id;
         Wish::create(['product_id' => $product_id, 'user_id' => $user_id]);
         return back()->with(['wishAdded', $product_id]);
     }
 
     public function remove($product_id)
     {
-        $user_id = User::first()->id;
+        $user_id = Auth::user()->id;
         $wish =  Wish::where('product_id', "=", $product_id)->where('user_id', '=', $user_id)->first();
         $wish->deleteOrFail();
         return back()->with(['wishRemoved', $product_id]);
