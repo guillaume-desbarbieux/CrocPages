@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-       
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <title>@yield('title', 'Mon site')</title>
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         .gradient-header {
             background: linear-gradient(to bottom, #f7e89b 25%, #ffffff 100%);
@@ -34,11 +33,16 @@
             <x-navbar></x-navbar>
         </div>
     </header>
-    
+
+
     @if(session('isAdded') === true)
         <div class="alert alert-success text-center m-0">Produit ajouté au panier !</div>
     @elseif(session('isAdded') === false)
         <div class="alert alert-danger text-center m-0">Ce produit est en rupture de stock.</div>
+    @endif
+
+    @if(session('alert'))
+    <x-alert/>    
     @endif
 
 

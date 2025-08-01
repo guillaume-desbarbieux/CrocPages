@@ -66,4 +66,8 @@ class User extends Authenticatable
         return $this->cart()->where('is_paid', '=', false)->first();
     }
 
+    public function isAdmin () {
+        return $this->is_admin;
+    }
+
 }

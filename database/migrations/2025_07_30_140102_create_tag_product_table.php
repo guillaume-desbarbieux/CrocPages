@@ -17,14 +17,14 @@ return new class extends Migration
             $table->foreign('tag_id')
             ->references('id')
             ->on('tags')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')
             ->references('id')
             ->on('products')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->timestamps();
         });
     }

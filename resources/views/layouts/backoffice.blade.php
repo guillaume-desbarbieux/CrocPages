@@ -42,6 +42,10 @@
 
     </header>
 
+    @if(session('alert'))
+    <x-alert/>    
+    @endif
+    
     <main>
         @yield('content')
     </main>

@@ -10,20 +10,20 @@ use Illuminate\Http\Request;
 
 class BackofficeController extends Controller
 {
-    
-    public function index($isDeleted = null)
+
+    public function index()
     {
         $products = Product::all();
 
-        return view('backoffice.index', compact('products'), ['isDeleted' => $isDeleted]);
+        return view('backoffice.index', compact('products'));
     }
 
 
 
-    function show($id, $action = null)
+    function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('backoffice.show', compact('product'), ['action' => $action]);
+        return view('backoffice.show', compact('product'));
     }
 
 
@@ -39,22 +39,30 @@ class BackofficeController extends Controller
 
     function update(UpdateProductRequest $request, $id)
     {
-        $action = null;
         $product = Product::findOrFail($id);
         $product->update($request->except('tag_id'));
         $product->tags()->sync($request->input('tag_id', []));
         $isUpdate = true;
-        
+
         $listErrors = Product::findOrFail($id)->isSame($request);
-       
-        
-        if($isUpdate === true && $listErrors === []){
-            $action = "updated";
-        }else{
-            $action = "unUpdated";
+
+
+        if ($isUpdate === true && $listErrors === []) {
+
+            $alert = [
+                'type' => "success",
+                'title' => "Félicitations",
+                'content' => "Le produit est mis à jour!"
+            ];
+        } else {
+            $alert = [
+                'type' => "danger",
+                'title' => "Raté",
+                'content' => "Il est plus têtu que prévu"
+            ];
         }
 
-        return redirect()->route('backoffice.product.show', ['id' => $id, 'action' => $action]);
+        return redirect()->route('backoffice.product.show', ['id'=>$id])->with('alert', $alert);
     }
 
 
@@ -63,12 +71,26 @@ class BackofficeController extends Controller
     {
         $isDeleted = Product::findOrFail($id)->delete();
 
-        return redirect()->route('backoffice.product.index', ['isDeleted' => $isDeleted]);
+        if ($isDeleted) {
+            $alert = [
+                'type' => "success",
+                'title' => "Félicitations",
+                'content' => "Le produit est supprimé!"
+            ];
+        } else {
+            $alert = [
+                'type' => "danger",
+                'title' => "Raté",
+                'content' => "Il est plus coriace que prévu"
+            ];
+        }
+        return redirect()->route('backoffice.product.index')->with('alert', $alert);
     }
 
 
 
-    function create(){
+    function create()
+    {
         $tags = Tag::all();
         return view('backoffice.create', ['tags' => $tags]);
     }
@@ -76,22 +98,29 @@ class BackofficeController extends Controller
 
 
     function save(UpdateProductRequest $request)
-{
-    $action = null;
+    {
+        $tagIds = $request->input('tag_id', []);
+        if ($request->filled('new_tag')) {
+            $newTag = Tag::firstOrCreate(['name' => $request->input('new_tag')]);
+            $tagIds[] = $newTag->id;
+        }
+        $newProduct = Product::create($request->except('tag_id', 'new_tag'));
+        $newProduct->tags()->sync($tagIds);
 
-    $tagIds = $request->input('tag_id', []);
-    if ($request->filled('new_tag')) {
-        $newTag = Tag::firstOrCreate(['name' => $request->input('new_tag')]);
-        $tagIds[] = $newTag->id;
+        if ($newProduct) {
+            $alert = [
+                'type' => "success",
+                'title' => "Félicitations",
+                'content' => "Le produit est créé!"
+            ];
+        } else {
+            $alert = [
+                'type' => "danger",
+                'title' => "Raté",
+                'content' => "Création échouée"
+            ];
+        }
+
+        return redirect()->route('backoffice.product.show', ['id' => $newProduct->id])->with('alert', $alert);
     }
-    $newProduct = Product::create($request->except('tag_id', 'new_tag'));
-    $newProduct->tags()->sync($tagIds);
-
-    if ($newProduct) {
-        $action = "created";
-    }
-
-    return redirect()->route('backoffice.product.show', ['id' => $newProduct->id, 'action' => $action]);
-}
-
 }
