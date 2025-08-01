@@ -65,4 +65,5 @@ class User extends Authenticatable
         
         return $this->cart()->where('is_paid', '=', false)->first();
     }
+
 }

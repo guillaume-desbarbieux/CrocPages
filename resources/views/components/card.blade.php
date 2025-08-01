@@ -29,7 +29,6 @@
     <p class="card-text">{{ $product->author }}</p>
 </div>
 
-
 @if($product->tags->isNotEmpty())
     <div class="row">
         <p class="card-text fst-italic fw-weight">{{ $product->tags->pluck('name')->join(', ') }}</p>
@@ -65,3 +64,4 @@
     href="{{ route('cart.add', ['product_id' => $product->id, 'quantity' => "1"]) }}" style="width: 2.5em;">
     <img class="img-fluid" src="{{ asset('images/logobasket.svg') }}" alt="panier" title="ajouter au panier">
 </a>
+
