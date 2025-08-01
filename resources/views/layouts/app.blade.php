@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         .gradient-header {
-        background: linear-gradient(to bottom, #f7e89b 25%, #ffffff 100%);
+        background: linear-gradient(to bottom, #f7e89b 25%, #f1f1f1 100%);
     }
     </style>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">

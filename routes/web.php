@@ -41,3 +41,6 @@ Route::put('/backoffice/product/{id}', [BackofficeController::class, 'update'])-
 Route::delete('/backoffice/product/{id}', [BackofficeController::class, 'delete'])->name('backoffice.product.delete');
 
 Route::get('/map', [MapController::class, 'index'])->name('map');
+Route::post('/backoffice/tags', [\App\Http\Controllers\TagController::class, 'store'])->name('tags.store');
+Route::get('/backoffice/tags/create', function () {return view('backoffice.createtag');})->name('tags.create');
+
