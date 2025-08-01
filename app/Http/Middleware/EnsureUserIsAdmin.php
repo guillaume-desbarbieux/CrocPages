@@ -17,9 +17,13 @@ class EnsureUserIsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->user()->isAdmin()) {
+        if ($request->user() == null || !$request->user()->isAdmin()) {
 
-            return redirect()->route('homepage')->with('warning', ['title' => "Accès interdit", "content" => "Vous n'avez pas accès à cette page"]);
+            return redirect()->route('homepage')->with('alert', [
+                'type' => "danger",
+                'title' => "Accès interdit",
+                'content' => "Vous n'avez pas accès à cette page."
+            ]);
         }
 
         return $next($request);

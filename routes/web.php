@@ -37,13 +37,15 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(EnsureUserIsAdmin::class)->group((function () {
-    Route::get('/backoffice/product/index/{isDeleted?}', action: [BackofficeController::class, 'index'])->name('backoffice.product.index');
-    Route::get('/backoffice/product/create', action: [BackofficeController::class, 'create'])->name('backoffice.product.create');
-    Route::put('/backoffice/product/save', action: [BackofficeController::class, 'save'])->name('backoffice.product.save');
+    Route::get('/backoffice/product/index',  [BackofficeController::class, 'index'])->name('backoffice.product.index');
+    Route::get('/backoffice/product/create',  [BackofficeController::class, 'create'])->name('backoffice.product.create');
+    Route::put('/backoffice/product/save',  [BackofficeController::class, 'save'])->name('backoffice.product.save');
     Route::get('/backoffice/product/{id}/edit', [BackofficeController::class, 'showEdit'])->name('backoffice.product.edit');
-    Route::get('/backoffice/product/{id}/{action?}', [BackofficeController::class, 'show'])->name('backoffice.product.show');
+    Route::get('/backoffice/product/{id}', [BackofficeController::class, 'show'])->name('backoffice.product.show');
     Route::put('/backoffice/product/{id}', [BackofficeController::class, 'update'])->name('backoffice.product.update');
     Route::delete('/backoffice/product/{id}', [BackofficeController::class, 'delete'])->name('backoffice.product.delete');
+    Route::get('/backoffice/tags/create', function () {return view('backoffice.createtag');})->name('tags.create');
+    Route::post('/backoffice/tags', [\App\Http\Controllers\TagController::class, 'store'])->name('tags.store');
 }));
 
 require __DIR__ . '/auth.php';

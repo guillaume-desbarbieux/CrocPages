@@ -23,13 +23,13 @@ class CartController extends Controller
     {
 
         $user = User::find(Auth::id());
-        if($user == null){
+        if ($user == null) {
             return view('auth.login');
         }
 
-        $cart = User::find(Auth::id())->cart()->where('is_paid','=', false)->first();
-        
-        if($cart == null){
+        $cart = User::find(Auth::id())->cart()->where('is_paid', '=', false)->first();
+
+        if ($cart == null) {
             $cart = Cart::create(['is_paid' => false, 'user_id' => Auth::id()]);
         }
 
@@ -39,7 +39,7 @@ class CartController extends Controller
     {
         $productsList = [];
         $cart = $this->getCart();
-        
+
         abort_if(!$cart, 404);
 
 
@@ -81,11 +81,32 @@ class CartController extends Controller
 
     function addItem($productId)
     {
-        if(!Auth::check()){
-            return redirect()->route('profile.edit')->with('warning', 'Veillez vous connecter pour utiliser le panier !');
+        if (!Auth::check()) {
+            return redirect()->route('profile.edit')->with('alert', [
+                'type' => "warning",
+                'title' => "Option indisponible",
+                'content' => "Veuillez vous connecter !!"
+            ]);
         }
         $cart =  Auth::user()->getCart();
         $isAdded = $cart->addItem($productId);
-        return back()->with('isAdded', $isAdded);
+
+
+        if($isAdded) {
+            $alert = [
+                'type' => "success",
+                'title' => "Bravo !",
+                'content' => "Produit ajouté au panier."
+            ];
+        } else {
+            $alert = [
+                'type' => "danger",
+                'title' => "Dommage !",
+                'content' => "Saperlipopette, ce produit c'est pas dans votre cabas."
+            ];
+
+        }
+
+        return back()->with('alert', $alert);;
     }
 }

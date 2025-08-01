@@ -41,18 +41,9 @@
         <div class="alert alert-danger text-center m-0">Ce produit est en rupture de stock.</div>
     @endif
 
-
-
-    @if(session('success'))
-        <div class="alert alert-success text-center m-0">{{ session('success') }}</div>
+    @if(session('alert'))
+    <x-alert/>    
     @endif
-
-
-    @if(session('warning'))
-    
-        <div class="alert alert-danger text-center m-0">{{ session('warning') }}</div>
-    @endif
-
 
 
     @yield('content')

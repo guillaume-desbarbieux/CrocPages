@@ -1,26 +1,18 @@
-@props()
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+@php
+  $alert = session('alert');
+@endphp
+<div class="modal show d-block">
+  <div class="modal-dialog position-absolute top-50 start-50 translate-middle" style="width: 30em;">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="modal-header bg-{{ $alert['type'] }} text-black">
+        <h2 class="modal-title fs-4">{{$alert['title']}}</h2>
+        <a href="" type="button" class="btn-close btn-close-white"></a>
       </div>
       <div class="modal-body">
-        ...
+        <p>{{ $alert['content'] }}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <a href="{{ url()->current() }}" class="btn btn-{{ $alert['type'] }}">OK</a>
       </div>
     </div>
   </div>
