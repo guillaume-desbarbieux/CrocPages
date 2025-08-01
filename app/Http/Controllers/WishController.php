@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Wish;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class WishController extends Controller
 {
@@ -16,7 +18,7 @@ class WishController extends Controller
     {
         $user_id = User::first()->id;
         Wish::create(['product_id' => $product_id, 'user_id' => $user_id]);
-        return back()->with(['wishAdded', $product_id]);
+        return Redirect::to(URL::previous()."#product_$product_id")->with(['wishAdded', $product_id]);
     }
 
     public function remove($product_id)
@@ -24,7 +26,7 @@ class WishController extends Controller
         $user_id = User::first()->id;
         $wish =  Wish::where('product_id', "=", $product_id)->where('user_id', '=', $user_id)->first();
         $wish->deleteOrFail();
-        return back()->with(['wishRemoved', $product_id]);
+        return Redirect::to(URL::previous()."#product_$product_id")->with(['wishRemoved', $product_id]);
     }
 
 
