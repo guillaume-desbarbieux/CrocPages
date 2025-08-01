@@ -9,6 +9,7 @@ use function PHPUnit\Framework\isEmpty;
 class Cart extends Model
 {
 
+    protected $fillable = ['is_paid', 'user_id'];
     public function user()
     {
         return $this->belongsTo(User::class);

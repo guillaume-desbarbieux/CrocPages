@@ -23,8 +23,6 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TagsSeeder::class,
             ProductsSeeder::class,
-            CartSeeder::class,
-            CartItemsSeeder::class,
             TagProductSeeder::class,
             
             

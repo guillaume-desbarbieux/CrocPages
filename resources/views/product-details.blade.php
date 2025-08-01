@@ -20,13 +20,12 @@
             @else
             <span class="text-danger">Rupture de stock</span>
             @endif
-            </p>
-            <p>Favoris: (à implémenter)</p>
-            <p>Prix : {{ $product->price }} €</p>
-            <div class="mt-3">
-                <a class="btn btn-success btn-lg" type="button"
+        </p>
+        <p>Favoris: (à implémenter)</p>
+        <p>Prix : {{ $product->price }} €</p>
+        <div class="mt-3">
+            <a class="btn btn-success btn-lg" type="button"
                     href="{{ route('cart.add', ['product_id' => $product->id, 'quantity' => "1"]) }}">Ajouter au Panier</a>
-            </div>
         </div>
     </div>
 </div>

@@ -2,10 +2,23 @@
 @Use(App\Models\Wish)
 
 
-
 <a class="row h-95" href="{{ route('catalog.show', ['id' => $product->id]) }}">
-    <img class="img-fluid object-fit-contain" style="height:350px" src="{{ $product->img_url }}"
-        alt="image de couverture de {{ $product->title }} ({{ $product->author }})">
+
+    {{-- -----------------affichage de la couverture ou du bandeau rupture de stock------------------ --}}
+
+    @if($product->stock > 0)
+        <img class="img-fluid object-fit-contain" style="height:350px" src="{{ $product->img_url }}"
+            alt="image de couverture de {{ $product->title }} ({{ $product->author }})">
+
+    @else
+        <img class="img-fluid object-fit-contain" style="height:350px; filter:blur(2px);" src="{{ $product->img_url }}"
+            alt="image de couverture de {{ $product->title }} ({{ $product->author }})">
+        <div class="position-absolute object-fit-content p-0">
+            <img class="img-fluid" src="{{ asset('images/noStock.png') }}" alt="Bandeau no stock" title="Stock épuisé">
+        </div>
+    @endif
+
+
 </a>
 
 <div class="row">
@@ -15,10 +28,11 @@
 <div class="row">
     <p class="card-text">{{ $product->author }}</p>
 </div>
+
 @if($product->tags->isNotEmpty())
-<div class="row">
-    <p class="card-text fst-italic fw-weight">{{ $product->tags->pluck('name')->join(', ') }}</p>
-</div>
+    <div class="row">
+        <p class="card-text fst-italic fw-weight">{{ $product->tags->pluck('name')->join(', ') }}</p>
+    </div>
 @endif
 
 <div class="row">
@@ -26,7 +40,7 @@
 </div>
 
 
-{{--  --}}
+{{-- -----------------affichage du bouton wish------------------ --}}
 
 @php
     $wish = Wish::where('product_id', '=', $product->id)->where('user_id', '=', 1)->first();
@@ -44,8 +58,10 @@
     </a>
 @endif
 
+{{-- -----------------affichage du bouton panier------------------ --}}
 
 <a class="position-absolute bottom-0 end-0 object-fit-content btn btn-light p-1"
     href="{{ route('cart.add', ['product_id' => $product->id, 'quantity' => "1"]) }}" style="width: 2.5em;">
     <img class="img-fluid" src="{{ asset('images/logobasket.svg') }}" alt="panier" title="ajouter au panier">
 </a>
+

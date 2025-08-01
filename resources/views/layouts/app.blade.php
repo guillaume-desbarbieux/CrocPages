@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
@@ -11,37 +11,62 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         .gradient-header {
-        background: linear-gradient(to bottom, #f7e89b 25%, #f1f1f1 100%);
-    }
+            background: linear-gradient(to bottom, #f7e89b 25%, #ffffff 100%);
+        }
     </style>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 
+
 <body>
-    
-   <header class='mb-3 sticky-top'>
- <x-promo-banner>Promo du jour</x-promo-banner>
-    <div class="container-fluid p-0">
-        <x-navbar></x-navbar>
-    </div>
+    <header class='mb-3 sticky-top'>
+        <x-promo-banner>Promo du jour</x-promo-banner>
+        <div class="container-fluid p-0">
+            <x-navbar></x-navbar>
+        </div>
     </header>
-    @if(session('isAdded') === true) <div class="alert alert-success text-center m-0">Produit ajouté au panier !</div>
+    
+    @if(session('isAdded') === true)
+        <div class="alert alert-success text-center m-0">Produit ajouté au panier !</div>
     @elseif(session('isAdded') === false)
         <div class="alert alert-danger text-center m-0">Ce produit est en rupture de stock.</div>
     @endif
 
-   
-  @yield('content')
-   
 
- 
+    @yield('content')
+
+    <!-- Page Heading -->
+    @isset($header)
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
+    @endisset
+
+    <!-- Page Content -->
+    <main>
+        @if(isset($slot))
+            {{ $slot }}
+        @endif
+    </main>
+    </div>
     <footer class="bg-dark text-white text-center py-3 mt-4">
         © 2025 - Mon site
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 
 
 </html>
