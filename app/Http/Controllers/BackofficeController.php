@@ -75,15 +75,23 @@ class BackofficeController extends Controller
 
 
 
-    function save(UpdateProductRequest $request){
+    function save(UpdateProductRequest $request)
+{
+    $action = null;
 
-        $action = null;
-        $newProduct = Product::create($request->except('tag_id'));
-        $newProduct->tags()->sync($request->input('tag_id', []));
-        if($newProduct){
-            $action = "created";
-        }
-
-        return redirect()->route('backoffice.product.show', ['id' => $newProduct->id, 'action' => $action]);
+    $tagIds = $request->input('tag_id', []);
+    if ($request->filled('new_tag')) {
+        $newTag = Tag::firstOrCreate(['name' => $request->input('new_tag')]);
+        $tagIds[] = $newTag->id;
     }
+    $newProduct = Product::create($request->except('tag_id', 'new_tag'));
+    $newProduct->tags()->sync($tagIds);
+
+    if ($newProduct) {
+        $action = "created";
+    }
+
+    return redirect()->route('backoffice.product.show', ['id' => $newProduct->id, 'action' => $action]);
+}
+
 }
