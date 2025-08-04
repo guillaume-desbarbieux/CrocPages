@@ -7,7 +7,6 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\BackofficeController;
-use App\Http\Controllers\MapController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WishController;
 use App\Http\Controllers\MapController;
