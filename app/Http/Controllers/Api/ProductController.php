@@ -81,8 +81,27 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function delete($id)
     {
-        //
+        $product = Product::find($id);
+        $isDeleted = false;
+        
+        if ($product) {
+            $isDeleted = $product->delete();
+        }
+
+
+        if ($isDeleted) {
+            $alert = [
+                "type" => "success",
+                "content" => "Le produit est supprimé!"
+            ];
+        } else {
+            $alert = [
+                "type" => "failure",
+                "content" => "Il est plus coriace que prévu"
+            ];
+        }
+        return  $alert;
     }
 }

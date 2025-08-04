@@ -15,3 +15,4 @@ Route::get('/show/{id}', [ProductController::class, 'show']);
 
 Route::post('/create', [ProductController::class, 'create']);
 Route::post('/update/{id}', [ProductController::class, 'update']);
+Route::delete('/delete/{id}', [ProductController::class, 'delete']);
