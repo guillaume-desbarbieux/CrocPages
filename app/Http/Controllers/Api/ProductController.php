@@ -53,4 +53,23 @@ class ProductController extends Controller
     {
         //
     }
+    public function save(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'img_url' => 'required|string|max:255',
+            'price' => 'required|integer',
+            'stock' => 'required|integer',
+        ]);
+        
+        $product = Product::create($validated);
+        
+        return response()->json([
+            'message' => 'Produit cree avec succes',
+            'data' => $product
+        ], 201);
+    }
 }
+

@@ -9,3 +9,4 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 Route::get('/index', [ProductController::class, 'index']);
+Route::post('/save', [ProductController::class, 'save']);
