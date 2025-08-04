@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = ['title', 'author', 'price', 'description', 'stock', 'img_url', 'tag_id'];
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function tags()
     {
