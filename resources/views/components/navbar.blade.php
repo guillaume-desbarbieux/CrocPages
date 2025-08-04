@@ -42,9 +42,9 @@
 
     {{-- BARRE DE RECHERCHE CENTRÉE --}}
     <div class="container d-flex justify-content-center my-3">
-        <form class="d-flex" role="search" style="max-width: 600px; width: 100%;">
-            <input class="form-control me-2 mb-3" type="search" placeholder="Recherchez un livre..."
-                aria-label="Search">
+        <form method="GET" action="{{ route('search') }}" class="d-flex" role="search" style="max-width: 600px; width: 100%;">
+            @csrf
+            <input class="form-control me-2 mb-3" name="query" type="search" placeholder="Recherchez un livre..." aria-label="Search">
             <button class="btn btn-success mb-3" type="submit">Recherchez</button>
         </form>
     </div>
