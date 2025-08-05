@@ -17,22 +17,25 @@ class WishController extends Controller
 
     public function add($product_id)
     {
-        if(!Auth::check()){
+        if (!Auth::check()) {
             return redirect()->route('profile.edit')->with('warning', 'Veillez vous connecter pour utiliser le panier !');
-        $user_id = User::Auth()->id;
+        }
+        $user_id = Auth::user()->id;
         Wish::create(['product_id' => $product_id, 'user_id' => $user_id]);
-        return Redirect::to(URL::previous()."#product_$product_id")->with(['wishAdded', $product_id]);
+        return Redirect::to(URL::previous() . "#product_$product_id")->with(['wishAdded', $product_id]);
     }
 
     public function remove($product_id)
     {
-        if(!Auth::check()){
+        if (!Auth::check()) {
             return redirect()->route('profile.edit')->with('warning', 'Veillez vous connecter pour utiliser le panier !');
-        $user_id = User::Auth()->id;
+        }
+        $user_id = Auth::user()->id;
         $wish =  Wish::where('product_id', "=", $product_id)->where('user_id', '=', $user_id)->first();
         $wish->deleteOrFail();
-        return Redirect::to(URL::previous()."#product_$product_id")->with(['wishRemoved', $product_id]);
+        return Redirect::to(URL::previous() . "#product_$product_id")->with(['wishRemoved', $product_id]);
     }
+
 
 
     public function index()

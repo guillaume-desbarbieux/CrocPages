@@ -1,5 +1,4 @@
 @props(['product'])
-@Use(App\Models\Wish)
 <div id="product_{{ $product->id }}">
 
 
@@ -45,7 +44,7 @@
     {{-- -----------------affichage du bouton wish------------------ --}}
 
     @php
-        $wish = Wish::where('product_id', '=', $product->id)->where('user_id', '=', 1)->first();
+        $wish = App\Models\Wish::where('product_id', '=', $product->id)->where('user_id', '=', 1)->first();
     @endphp
 
     @if(isset($wish))
