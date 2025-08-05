@@ -73,9 +73,9 @@ class BackofficeController extends Controller
 
         if ($isDeleted) {
             $alert = [
-                'type' => "success",
-                'title' => "Félicitations",
-                'content' => "Le produit est supprimé!"
+                "type" => "success",
+                "title" => "Félicitations",
+                "content" => "Le produit est supprimé!"
             ];
         } else {
             $alert = [

@@ -10,6 +10,8 @@ use App\Http\Controllers\BackofficeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WishController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\UserController;
+
 use App\Http\Middleware\EnsureUserIsAdmin;
 
 Route::get('/', [HomeController::class, 'index'])->name("homepage");
@@ -28,8 +30,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/wish/remove/{product_id}', [WishController::class, 'remove'])->name('product.wish.remove');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/token', [UserController::class, 'listToken'])->name('profile.token.index');
+    Route::get('/profile/token/create', [UserController::class, 'createToken'])->name('profile.token.create');
+    Route::get('/profile/token/delete', [UserController::class, 'deleteTokens'])->name('profile.token.delete');
+
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/cart/add/{product_id}/{quantity}', [CartController::class, 'addItem'])->name('cart.add');
@@ -45,7 +53,9 @@ Route::middleware(EnsureUserIsAdmin::class)->group((function () {
     Route::get('/backoffice/product/{id}', [BackofficeController::class, 'show'])->name('backoffice.product.show');
     Route::put('/backoffice/product/{id}', [BackofficeController::class, 'update'])->name('backoffice.product.update');
     Route::delete('/backoffice/product/{id}', [BackofficeController::class, 'delete'])->name('backoffice.product.delete');
-    Route::get('/backoffice/tags/create', function () {return view('backoffice.createtag');})->name('tags.create');
+    Route::get('/backoffice/tags/create', function () {
+        return view('backoffice.createtag');
+    })->name('tags.create');
     Route::post('/backoffice/tags', [\App\Http\Controllers\TagController::class, 'store'])->name('tags.store');
 }));
 
